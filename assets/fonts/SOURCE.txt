@@ -1,0 +1,4 @@
+Manrope variable font
+Source: https://raw.githubusercontent.com/google/fonts/main/ofl/manrope/Manrope%5Bwght%5D.ttf
+Retrieved: 2026-11-16
+License: OFL.txt
