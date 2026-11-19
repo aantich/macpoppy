@@ -39,7 +39,7 @@
 }
 
 .monitor-metrics { grid-column: 2; display: flex; }
-.monitor-demo button:focus-visible {
+.monitor-demo :is(button, a):focus-visible {
   outline: 2px solid var(--monitor-chart);
   outline-offset: -2px;
 }
@@ -125,8 +125,9 @@
   font-size: 12px;
   font-weight: 650;
   white-space: nowrap;
-  opacity: 1;
 }
+
+.monitor-get:hover { background: linear-gradient(#af402e, #983224); }
 
 .monitor-download {
   flex: none;
