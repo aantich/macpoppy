@@ -9,7 +9,7 @@ if (domain !== 'macpoppy.com') throw new Error('Unexpected publication domain');
 
 const files = ['index.html', 'styles.css', 'app.js', 'monitor.css', 'monitor.js', 'CNAME', '.nojekyll', 'robots.txt', 'sitemap.xml'];
 const assets = ['assets/poppy-mark-transparent.png', 'assets/icons', 'assets/fonts', 'assets/social'];
-const pageDirectories = ['velvet/userguide', 'privacypolicy'];
+const pageDirectories = ['velvet/userguide', 'privacypolicy', 'support'];
 for (const file of [...files, ...assets, ...pageDirectories]) await stat(path.join(root, file));
 
 await rm(output, { recursive: true, force: true });
@@ -34,7 +34,7 @@ for (const file of ['index.html', ...pageDirectories.map(directory => `${directo
   await verifyReferences(file, /(?:src|href)="([^"#]+)(?:#[^"]*)?"/g);
   await verifyReferences(file, /<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content="([^"]+)"/g);
 }
-for (const file of [...files.filter(file => file.endsWith('.css')), 'velvet/userguide/guide.css', 'privacypolicy/policy.css']) {
+for (const file of [...files.filter(file => file.endsWith('.css')), 'velvet/userguide/guide.css', 'privacypolicy/policy.css', 'support/support.css']) {
   await verifyReferences(file, /url\(["']?([^"')]+)["']?\)/g);
 }
 

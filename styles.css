@@ -194,7 +194,7 @@ body { font-size: 18px; }
   .principles h3 { font-size: 17px; }
   .principles p { font-size: 15px; }
   .footer-top { flex-wrap: wrap; }
-  .footer-top nav { margin-left: auto; }
+  .footer-top nav { margin-left: auto; flex-wrap: wrap; }
 }
 @media (max-width: 720px) {
   .hero-intro { font-size: 16px; }

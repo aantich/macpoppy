@@ -1,0 +1,123 @@
+.support-page {
+  background: var(--paper);
+}
+
+.support-shell {
+  width: min(820px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.support-header {
+  background: white;
+  border-bottom: 1px solid var(--line);
+  padding-block: 12px;
+}
+
+.support-content {
+  padding-block: clamp(40px, 8vw, 84px);
+  line-height: 1.65;
+}
+
+.support-content h1 {
+  margin-bottom: 12px;
+  font-size: clamp(2.4rem, 7vw, 4.3rem);
+  font-weight: 650;
+  letter-spacing: -.055em;
+  line-height: 1.1;
+}
+
+.support-content a,
+.support-footer a {
+  color: #963730;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  overflow-wrap: anywhere;
+}
+
+.support-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-block: 26px 32px;
+}
+
+.support-nav a {
+  padding: 7px 14px;
+  border: 1px solid #e4dcd8;
+  border-radius: 999px;
+  background: white;
+  color: var(--ink);
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+.support-nav a:hover {
+  border-color: #963730;
+}
+
+.support-app {
+  margin-bottom: 18px;
+  padding: clamp(20px, 4vw, 32px);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: white;
+}
+
+.support-app-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.support-app-heading img {
+  flex: none;
+  object-fit: contain;
+}
+
+.support-content h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.support-app p,
+.support-report h2 {
+  margin-bottom: 8px;
+}
+
+.support-topics {
+  display: grid;
+  gap: 18px;
+  margin: 20px 0 0;
+}
+
+.support-topics div {
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.support-topics dt {
+  font-weight: 750;
+}
+
+.support-topics dd {
+  margin: 4px 0 0;
+}
+
+.support-report {
+  margin-top: 32px;
+}
+
+.support-footer {
+  border-top: 1px solid var(--line);
+  font-size: .875rem;
+}
+
+.support-footer .support-shell {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 18px;
+}
