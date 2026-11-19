@@ -7,25 +7,35 @@ const output = path.join(root, 'dist');
 const domain = (await readFile(path.join(root, 'CNAME'), 'utf8')).trim();
 if (domain !== 'macpoppy.com') throw new Error('Unexpected publication domain');
 
-const files = ['index.html', 'styles.css', 'app.js', 'CNAME', '.nojekyll', 'robots.txt', 'sitemap.xml'];
-const assets = ['assets/poppy-mark-transparent.png', 'assets/icons', 'assets/fonts'];
-for (const file of [...files, ...assets]) await stat(path.join(root, file));
+const files = ['index.html', 'styles.css', 'app.js', 'monitor.css', 'monitor.js', 'CNAME', '.nojekyll', 'robots.txt', 'sitemap.xml'];
+const assets = ['assets/poppy-mark-transparent.png', 'assets/icons', 'assets/fonts', 'assets/social'];
+const guide = 'velvet/userguide';
+for (const file of [...files, ...assets, guide]) await stat(path.join(root, file));
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 for (const file of files) await cp(path.join(root, file), path.join(output, file));
 await mkdir(path.join(output, 'assets'), { recursive: true });
 for (const asset of assets) await cp(path.join(root, asset), path.join(output, asset), { recursive: true });
+await cp(path.join(root, guide), path.join(output, guide), { recursive: true });
 
-const html = await readFile(path.join(output, 'index.html'), 'utf8');
-for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
-  const reference = match[1];
-  if (/^[a-z][a-z\d+.-]*:/i.test(reference)) continue;
-  await stat(path.join(output, reference));
+const site = new URL(`https://${domain}/`);
+async function verifyReferences(file, pattern) {
+  const source = await readFile(path.join(output, file), 'utf8');
+  const page = new URL(file, site);
+  for (const [, reference] of source.matchAll(pattern)) {
+    const url = new URL(reference, page);
+    if (url.origin !== site.origin) continue;
+    const target = path.join(output, decodeURIComponent(url.pathname));
+    if ((await stat(target)).isDirectory()) await stat(path.join(target, 'index.html'));
+  }
 }
-const css = await readFile(path.join(output, 'styles.css'), 'utf8');
-for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/g)) {
-  if (!/^[a-z][a-z\d+.-]*:/i.test(match[1])) await stat(path.join(output, match[1]));
+for (const file of ['index.html', `${guide}/index.html`]) {
+  await verifyReferences(file, /(?:src|href)="([^"#]+)(?:#[^"]*)?"/g);
+  await verifyReferences(file, /<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content="([^"]+)"/g);
+}
+for (const file of [...files.filter(file => file.endsWith('.css')), `${guide}/guide.css`]) {
+  await verifyReferences(file, /url\(["']?([^"')]+)["']?\)/g);
 }
 
 async function summarize(directory) {

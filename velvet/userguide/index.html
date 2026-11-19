@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T2CTJM5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f7fb">
+  <title>Poppy Velvet User Guide | Set Up Linux VMs on Mac</title>
+  <meta name="description" content="Install ARM64 Linux on an Apple silicon Mac, manage VMs, test accelerated OpenGL, and connect coding agents through MCP with the Poppy Velvet User Guide.">
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://macpoppy.com/velvet/userguide/">
+  <meta property="og:title" content="Poppy Velvet User Guide">
+  <meta property="og:description" content="Set up a Linux VM on your Mac and connect a coding agent through MCP. Follow the Velvet guide from first boot to your first command.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://macpoppy.com/velvet/userguide/">
+  <meta property="og:site_name" content="Poppy">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://macpoppy.com/assets/social/velvet-guide.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Velvet User Guide graphic beside the app’s first-launch tour for Linux virtual machines, MCP, and 3D acceleration.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Poppy Velvet User Guide">
+  <meta name="twitter:description" content="Set up a Linux VM on your Mac and connect a coding agent through MCP. Follow the Velvet guide from first boot to your first command.">
+  <meta name="twitter:image" content="https://macpoppy.com/assets/social/velvet-guide.png">
+  <meta name="twitter:image:alt" content="Velvet User Guide graphic beside the app’s first-launch tour for Linux virtual machines, MCP, and 3D acceleration.">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "@id": "https://macpoppy.com/velvet/userguide/#guide",
+      "url": "https://macpoppy.com/velvet/userguide/",
+      "headline": "Poppy Velvet User Guide",
+      "description": "Install ARM64 Linux on an Apple silicon Mac, manage VMs, test accelerated OpenGL, and connect coding agents through MCP.",
+      "image": "https://macpoppy.com/assets/social/velvet-guide.png",
+      "inLanguage": "en",
+      "about": { "@id": "https://macpoppy.com/#velvet" },
+      "publisher": { "@id": "https://macpoppy.com/#poppy" }
+    }
+  </script>
+  <link rel="icon" type="image/png" href="/assets/poppy-mark-transparent.png">
+  <link rel="stylesheet" href="/velvet/userguide/guide.css">
+  <script src="/velvet/userguide/guide.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#guide-content">Skip to content</a>
+  <header class="guide-header">
+    <div class="header-inner">
+      <a href="/" class="brand" aria-label="Poppy home">
+        <img src="/assets/poppy-mark-transparent.png" width="34" height="34" alt="">
+        <span>Poppy</span>
+      </a>
+      <span class="header-divider" aria-hidden="true"></span>
+      <a class="header-guide" href="/velvet/userguide/">Velvet User Guide</a>
+      <a class="header-return" href="/#velvet">Velvet on Poppy <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <div class="guide-layout">
+    <aside class="guide-sidebar">
+      <details class="section-menu" open>
+        <summary>Guide sections</summary>
+        <nav aria-label="User guide sections">
+          <p>Get started</p>
+          <a href="#overview" aria-current="location">Overview</a>
+          <a href="#create">Create or import a VM</a>
+          <a href="#templates">Templates and Linux login</a>
+          <a href="#run">Run and use the console</a>
+          <p>Configure and automate</p>
+          <a href="#settings">VM settings and storage</a>
+          <a href="#graphics">Linux 3D acceleration</a>
+          <a href="#tools">Poppy Tools</a>
+          <a href="#commands">Run commands</a>
+          <a href="#mcp">Connect coding agents</a>
+          <a href="#projects">Projects and temporary VMs</a>
+          <p>Reference</p>
+          <a href="#cli">Command line and MCP tools</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+        </nav>
+      </details>
+    </aside>
+
+    <main class="guide-content" id="guide-content" tabindex="-1">
+      <section class="overview" id="overview" aria-labelledby="guide-title">
+        <div class="guide-hero">
+          <div class="hero-copy">
+            <span class="build-label"><span aria-hidden="true"></span> Velvet Dev testing build</span>
+            <h1 id="guide-title">Velvet<br> User Guide</h1>
+            <p>Set up Linux on your Mac, use the desktop and terminal, and run commands and tests with a coding agent.</p>
+            <div class="hero-links">
+              <a class="primary-link" href="#create">Create a VM <span aria-hidden="true">↓</span></a>
+              <a class="secondary-link" href="#mcp">Connect an agent</a>
+            </div>
+          </div>
+          <figure class="hero-preview">
+            <a href="/velvet/userguide/images/welcome.webp">
+              <img src="/velvet/userguide/images/welcome.webp" width="1222" height="758" alt="The Velvet welcome tour highlights Linux virtual machines, coding agents through MCP, and Linux 3D acceleration." fetchpriority="high">
+            </a>
+            <figcaption>The first-launch tour is also under <strong>Help → Velvet Testing Guide</strong>.</figcaption>
+          </figure>
+        </div>
+        <div class="overview-note">
+          <img src="/assets/icons/velvet.svg" width="48" height="48" alt="">
+          <p>Velvet runs on <strong>Apple silicon Macs with macOS 27 or later</strong>. Use an <strong>ARM64 (aarch64)</strong> Linux installer or disk image. Start with Ubuntu Desktop for a graphical Linux session or Ubuntu Server for a terminal-focused environment.</p>
+        </div>
+      </section>
+
+      <section class="guide-section" id="create" aria-labelledby="create-title">
+        <h2 id="create-title">Create or import a VM</h2>
+        <p class="section-intro">Use <strong>New VM</strong> in the library to install Linux, copy a disk image, or create a blank machine.</p>
+        <div class="guide-columns">
+          <div>
+            <h3>Install Linux from an ISO</h3>
+            <ol class="steps">
+              <li>Enter a name and choose <strong>Install an operating system</strong>.</li>
+              <li>Pick your ARM64 ISO with <strong>Choose…</strong>, or select <strong>Get Linux…</strong> to download Ubuntu. Velvet verifies vendor downloads and reuses completed installers for future VMs.</li>
+              <li>Continue through <strong>Resources</strong>, <strong>Storage</strong>, and <strong>Review</strong>. Select <strong>Create machine</strong>.</li>
+              <li>Select <strong>Boot installer</strong> and finish installing inside Linux. Create your own Linux user during the installation. Shut down and eject the ISO before booting the installed system.</li>
+            </ol>
+          </div>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/new-vm.webp"><img src="/velvet/userguide/images/new-vm.webp" width="1313" height="1050" alt="New VM wizard showing the installer, disk import, and set up later choices." loading="lazy"></a>
+            <figcaption>Choose a Linux installation source in the <strong>System</strong> step.</figcaption>
+          </figure>
+        </div>
+        <div class="guide-columns secondary-columns">
+          <div>
+            <h3>Use an existing disk or machine</h3>
+            <ul>
+              <li><strong>Import a disk</strong> copies an ARM64 <code>.asif</code> or RAW disk into a new VM. A bootable disk needs its own bootloader and installed system. Convert other formats, such as QCOW2, to a supported disk format before importing.</li>
+              <li><strong>Open Virtual Machine…</strong> adds a Velvet VM folder to the library in place. Use it when the VM already has a Velvet configuration and disk.</li>
+              <li><strong>Set up later</strong> creates a blank disk. Attach the ISO from the machine’s <strong>Installation media</strong> section when you’re ready.</li>
+            </ul>
+          </div>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/get-linux.webp"><img src="/velvet/userguide/images/get-linux.webp" width="1200" height="994" alt="Get Linux sheet with Download buttons for Ubuntu Desktop and Ubuntu Server ARM64." loading="lazy"></a>
+            <figcaption><strong>Get Linux</strong> offers verified Ubuntu ARM64 installers.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="guide-section" id="templates" aria-labelledby="templates-title">
+        <h2 id="templates-title">Templates and Linux login</h2>
+        <p>Open <strong>Templates</strong> for ready-to-provision environments such as Ubuntu, Ubuntu Desktop, Python, Node.js, and Rust. Select a published template and version, then choose <strong>Create VM</strong>. Velvet downloads or reuses its verified base, boots a new independent VM, and installs Poppy Tools.</p>
+        <ol>
+          <li>Choose resources, a storage location, and an optional project in the creation dialog.</li>
+          <li>Watch <strong>Activity</strong> for first-boot setup. <strong>Template ready</strong> means setup completed. <strong>Cached</strong> means the base image is available locally.</li>
+          <li>Open the VM window when it’s ready. For supported templates, the creation dialog, machine page, and <strong>Settings → System</strong> explain how to sign in.</li>
+        </ol>
+        <div class="guide-callout">
+          <h3>Ubuntu template account</h3>
+          <p>The desktop or terminal signs in automatically as <code>developer</code> after setup. The account has no login password and direct root login is disabled. Use <code>sudo &lt;command&gt;</code> for one administrative command or <code>sudo -i</code> in the VM terminal for a root shell. Both use passwordless sudo. For manual installs and imported disks, use the account configured inside that VM.</p>
+        </div>
+        <p>If the catalog shows <strong>Image not published</strong>, import a signed Velvet template package with <strong>Import Templates…</strong> or use <a href="#create">Get Linux</a> to install from an ISO.</p>
+      </section>
+
+      <section class="guide-section" id="run" aria-labelledby="run-title">
+        <h2 id="run-title">Run and use the console</h2>
+        <div class="guide-columns">
+          <div>
+            <p>Choose <strong>Run machine</strong> to boot, or <strong>Show window</strong> to return to a running VM. Closing the VM window leaves Linux running. Use <strong>Shut down</strong> and wait for the stopped state before changing hardware settings.</p>
+            <h3>Find startup output</h3>
+            <ul>
+              <li><strong>VM Display</strong> shows the graphical console, including the installer and boot output sent to the display.</li>
+              <li><strong>Window → Show Terminal</strong> opens the serial terminal. A terminal-oriented template can switch there when Linux starts sending serial output. Use <strong>Show VM Display</strong> to switch back.</li>
+              <li>In an accelerated VM, <strong>Window → Show Boot Output</strong> reopens the serial boot view. Choose <strong>Open Console Log</strong> in the library’s machine menu for the retained serial log.</li>
+            </ul>
+          </div>
+          <figure class="guide-shot terminal-shot">
+            <a href="/velvet/userguide/images/ubuntu-terminal.webp"><img src="/velvet/userguide/images/ubuntu-terminal.webp" width="820" height="326" alt="Ubuntu serial terminal showing successful automatic login as developer after boot." loading="lazy"></a>
+            <figcaption>A prepared Ubuntu VM signing in to the serial terminal.</figcaption>
+          </figure>
+        </div>
+        <p>Serial text depends on what the guest sends. If an imported Linux image shows a blank Terminal, switch to <strong>VM Display</strong>. To adjust serial text size, use the VM window’s <strong>Window</strong> menu. If Linux cannot shut down cleanly, <strong>Force Stop…</strong> in the machine menu cuts power and can interrupt writes.</p>
+      </section>
+
+      <section class="guide-section" id="settings" aria-labelledby="settings-title">
+        <h2 id="settings-title">VM settings and storage</h2>
+        <p>Shut down a VM, choose <strong>Settings</strong>, then use <strong>Continue</strong> to reach the relevant step. Finish with <strong>Save changes</strong> on <strong>Review</strong>. The changes apply at the next start.</p>
+        <div class="data-table">
+          <table>
+            <thead><tr><th scope="col">Step</th><th scope="col">What you can change</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">System</th><td>Name and installation media.</td></tr>
+              <tr><th scope="row">Resources</th><td>Virtual CPUs, guest memory, shared networking, display resolution, and graphics.</td></tr>
+              <tr><th scope="row">Storage</th><td>Folder location and disk expansion. After increasing virtual capacity, extend the partition or filesystem in Linux if the guest requires it.</td></tr>
+              <tr><th scope="row">Review</th><td>Confirm the resulting configuration and save it.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Display resolution can be <strong>Automatic</strong>, <strong>Match Window</strong>, or a fixed size. Match Window requests the Mac window’s pixel size, including Retina. Linux can keep its current mode until you select the new resolution in the guest. The networking switch uses a shared connection through your Mac.</p>
+        <p>On the machine page, <strong>Disk capacity</strong> is what Linux can use. <strong>Allocated on this Mac</strong> shows the disk’s allocated blocks. A growable ASIF disk consumes more host space as Linux writes data. Use <strong>Reveal in Finder</strong> to locate the VM folder. From <strong>Remove…</strong>, choose <strong>Remove from Library</strong> to keep its files, or <strong>Move to Trash</strong> for a stopped VM you intend to delete.</p>
+      </section>
+
+      <section class="guide-section" id="graphics" aria-labelledby="graphics-title">
+        <h2 id="graphics-title">Linux 3D acceleration</h2>
+        <p class="section-intro">Test hardware-accelerated OpenGL in an Ubuntu desktop VM.</p>
+        <div class="guide-columns">
+          <div>
+            <ol class="steps">
+              <li>Start the VM with <strong>Standard</strong> graphics. <a href="#tools">Install and pair Poppy Tools</a> so the accelerated window can deliver mouse and keyboard input.</li>
+              <li>Shut down the VM. Open <strong>Settings → Resources</strong> and change <strong>Graphics</strong> to <strong>Accelerated OpenGL</strong>.</li>
+              <li>Review the GPU memory limit and select <strong>Save changes</strong>. Start the VM and open its desktop.</li>
+              <li>In Linux, run <code>glxinfo -B</code> with Mesa utilities installed. Look for direct rendering and a <code>virgl</code> renderer. Run a Linux OpenGL app in the desktop to try acceleration.</li>
+            </ol>
+            <p>Use <strong>Advanced graphics</strong> to choose the renderer placement. <strong>Isolated</strong> is the default and runs the renderer in a separate process. If the desktop or input is unavailable, switch the stopped VM back to Standard and check Poppy Tools.</p>
+          </div>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/graphics.webp"><img src="/velvet/userguide/images/graphics.webp" width="1313" height="1050" alt="Resources step with Accelerated OpenGL selected and the GPU memory limit field below it." loading="lazy"></a>
+            <figcaption>Set graphics and the GPU memory limit in the VM’s <strong>Resources</strong> step.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="guide-section" id="tools" aria-labelledby="tools-title">
+        <h2 id="tools-title">Install Poppy Tools</h2>
+        <p>Tools connects Linux to Velvet for supervised commands and accelerated-window input. A ready Ubuntu template VM already has Tools. For a manually installed or imported Linux VM, pair it from its machine page.</p>
+        <div class="guide-columns">
+          <div>
+            <ol class="steps">
+              <li>Shut down the VM, then select <strong>Poppy Tools → Set up Poppy Tools…</strong>.</li>
+              <li>Choose <strong>Prepare installation disk</strong>. Start the VM and sign in to Linux.</li>
+              <li>Copy the command from the setup sheet and run it inside the guest as root. Use your Linux account’s usual method for obtaining administrative access.</li>
+              <li>Return to the library and look for <strong>Connected</strong> in Poppy Tools. The service reconnects automatically after boot. <strong>Reconnect</strong> retries an existing pairing.</li>
+            </ol>
+          </div>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/tools.webp"><img src="/velvet/userguide/images/tools.webp" width="1244" height="1050" alt="Poppy Tools setup sheet with separate steps for preparing the VM’s disk and installing Tools inside Linux." loading="lazy"></a>
+            <figcaption>The library keeps disk preparation and the Linux installation step together.</figcaption>
+          </figure>
+        </div>
+        <p>The installation disk contains this VM’s pairing key. Keep it private. Use <strong>Forget connection…</strong> on a stopped VM to revoke the pairing. To reconnect a VM whose Tools are outdated, follow <strong>Installation help…</strong> to pair and install the current Tools.</p>
+      </section>
+
+      <section class="guide-section" id="commands" aria-labelledby="commands-title">
+        <h2 id="commands-title">Run commands from Velvet</h2>
+        <p>On a running VM with Tools connected, select <strong>Run command…</strong>. Pick a Linux account, enter an existing absolute guest working directory, and choose the time limit. <strong>Allow commands</strong> grants the selected account command access for four hours. Commands use that account’s Linux permissions and configured privileges.</p>
+        <p>For a first check, enter <code>uname -r</code> with <code>/</code> as the working directory. Every run starts a fresh, noninteractive shell. Use the VM terminal for commands that need input, a login shell, or an interactive program.</p>
+        <p>Open the machine’s <strong>Commands</strong> panel to see task state and switch between <strong>Standard output</strong> and <strong>Errors</strong>. Review the exit code and use <strong>Save output…</strong> to keep the retained output. History remains available with the VM shut down. Stop requests can interrupt running work. They cannot undo writes that already happened.</p>
+      </section>
+
+      <section class="guide-section" id="mcp" aria-labelledby="mcp-title">
+        <h2 id="mcp-title">Connect coding agents through MCP</h2>
+        <p class="section-intro">Use a local MCP connection to let Codex, Claude Code, or another client discover VMs and run work in Linux.</p>
+        <div class="guide-columns">
+          <ol class="steps">
+            <li>Select <strong>Automation → Connect agent</strong> and choose your client.</li>
+            <li>Choose <strong>Copy setup message</strong>, then paste it into that agent and send it. The message registers the protected local connection and supplies the Velvet skill.</li>
+            <li>Ask the agent to <strong>list my Velvet VMs</strong> to verify access in that chat. If the MCP client needs a restart or reconnect, do that and repeat the read-only check.</li>
+            <li>To reuse a VM, install Tools and choose <strong>Add existing VM…</strong> from the connection details. Select the intended account and <strong>Allow access</strong>. Adding a VM grants only that selected VM and Linux account.</li>
+          </ol>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/connect-agent.webp"><img src="/velvet/userguide/images/connect-agent.webp" width="960" height="444" alt="Connect agent sheet with Codex selected in the MCP client picker." loading="lazy"></a>
+            <figcaption>Choose Codex, Claude Code, or another MCP client.</figcaption>
+          </figure>
+        </div>
+        <div class="guide-callout">
+          <h3>Try an agent request</h3>
+          <p>“Run <code>uname -r</code> in my Ubuntu VM and show the kernel version.” For a build or test request, tell the agent which VM and which Linux workspace to use. Make sure the source is already inside Linux.</p>
+        </div>
+        <p><strong>Setup verified</strong> records successful contact. To check a particular chat, run the list request there. Use the connection’s <strong>Settings</strong> to manage its resource and storage limits. <strong>Remove access</strong> revokes one VM grant. <strong>Remove connection</strong> revokes the client and schedules cleanup of its temporary VMs.</p>
+        <p>The local MCP tools cover template provisioning, VM lifecycle, project metadata, and batch execution. Use the native VM window for interactive terminal and desktop work. The local setup authenticates through Velvet’s protected configuration, with no Linux password or SSH setup required.</p>
+      </section>
+
+      <section class="guide-section" id="projects" aria-labelledby="projects-title">
+        <h2 id="projects-title">Projects and temporary VMs</h2>
+        <p>Use <strong>Projects → New Project</strong> to name a workflow and record an absolute Linux workspace path. Bind an existing VM from the project page, or choose the project when creating a template VM. The binding records a path inside Linux. Create the directory and put your source there separately.</p>
+        <p>Choose <strong>Temporary</strong> when a template VM is disposable. A temporary VM normally expires after one hour, including setup and time spent shut down. <strong>Extend 1 Hour</strong> adds time within the connection’s limits. <strong>Keep</strong> makes it persistent. Save work you want to keep before using <strong>Release…</strong>, which deletes the managed VM after safe shutdown.</p>
+      </section>
+
+      <section class="guide-section" id="cli" aria-labelledby="cli-title">
+        <h2 id="cli-title">Command line and MCP tools</h2>
+        <h3>Run the bundled CLI</h3>
+        <p>In macOS Terminal, use the executable from the installed Dev app. Adjust the path if you keep the app outside Applications. Choose external VM folders in Velvet first so the sandbox can restore its saved access.</p>
+        <pre><code>velvet="/Applications/Poppy Velvet Dev.app/Contents/MacOS/velvet-dev-library"
+"$velvet" --cli --help
+"$velvet" --cli status "/path/to/Ubuntu.virtio"
+"$velvet" --cli start "/path/to/Ubuntu.virtio" --window
+"$velvet" --cli console "/path/to/Ubuntu.virtio"
+"$velvet" --cli shutdown "/path/to/Ubuntu.virtio"</code></pre>
+        <p>Use <code>Ctrl+]</code> to detach from the CLI console. The CLI help also lists disk and display configuration, Tools setup, task output, and diagnostics. Guest paths passed to <code>exec --cwd</code> must already exist inside Linux.</p>
+        <h3>MCP workflow for agents</h3>
+        <div class="data-table">
+          <table>
+            <thead><tr><th scope="col">Goal</th><th scope="col">Tools and results</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Find resources</th><td><code>machines.list</code>, <code>machines.get</code>, <code>storage.list</code>, and <code>templates.list</code>. Follow <code>nextCursor</code> with unchanged filters. Copy exact IDs and versions.</td></tr>
+              <tr><th scope="row">Create a VM</th><td><code>machines.create</code> returns an operation. Wait for <code>succeeded</code> before using its <code>machineID</code>, Linux <code>principal</code>, and <code>workspace</code>. <code>templates.get</code> returns interactive login guidance when available.</td></tr>
+              <tr><th scope="row">Run a command</th><td><code>execution.start</code> uses a guest directory. Read stdout and stderr with independent offsets via <code>operations.read_output</code>. Drain both streams after completion and check the exit code.</td></tr>
+              <tr><th scope="row">Recover accepted work</th><td>Use <code>operations.list</code>, <code>operations.get</code>, or <code>operations.wait</code>. Retry an uncertain request with the original key and identical arguments.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The tools and limits exposed by each MCP connection appear in its live discovery. Use the bundled Velvet skill for detailed examples and operation recovery.</p>
+      </section>
+
+      <section class="guide-section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+        <h2 id="troubleshooting-title">Troubleshooting</h2>
+        <dl class="troubleshooting-list">
+          <div><dt>The VM returns to its installer.</dt><dd>Shut down, eject the ISO from <strong>Installation media</strong>, then boot the system disk.</dd></div>
+          <div><dt>The terminal has no boot messages.</dt><dd>Switch to <strong>VM Display</strong> to see the graphical console. Check <strong>Open Console Log</strong> for serial output the guest has emitted.</dd></div>
+          <div><dt>The accelerated desktop shows Input needs Poppy Tools.</dt><dd>Check the Tools connection. If you need working input to install Tools, switch the stopped VM back to Standard, install and pair Tools, then re-enable acceleration.</dd></div>
+          <div><dt>A VM folder is unavailable.</dt><dd>Reconnect its drive and choose <strong>Open Virtual Machine…</strong> to select its folder and restore access.</dd></div>
+          <div><dt>The agent can’t see a VM.</dt><dd>Check that MCP lists VMs in that chat, the connection still grants that VM, its Tools are connected, and the intended Linux account is selected.</dd></div>
+          <div><dt>The VM failed to start or shut down.</dt><dd>Open <strong>View diagnostics…</strong> from the machine. For a reproducible launch problem, use <strong>Run with diagnostics</strong>, then <strong>Export diagnostics…</strong> to save a report.</dd></div>
+        </dl>
+      </section>
+
+      <footer class="guide-footer">
+        <a href="#overview">Back to top ↑</a>
+        <a href="/#velvet">Poppy Velvet</a>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

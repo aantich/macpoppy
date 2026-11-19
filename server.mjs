@@ -5,7 +5,7 @@ import path from 'node:path';
 
 const root = fileURLToPath(new URL('.', import.meta.url));
 const port = Number(process.env.PORT || 4173);
-const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.svg': 'image/svg+xml', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8', '.md': 'text/plain; charset=utf-8' };
+const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml', '.ttf': 'font/ttf', '.txt': 'text/plain; charset=utf-8', '.md': 'text/plain; charset=utf-8' };
 
 const server = http.createServer(async (request, response) => {
   if (!['GET', 'HEAD'].includes(request.method)) {
@@ -16,10 +16,11 @@ const server = http.createServer(async (request, response) => {
   try {
     const url = new URL(request.url, 'http://localhost');
     const pathname = decodeURIComponent(url.pathname);
-    const target = path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
-    if (!target.startsWith(root) || pathname.includes('\0')) {
+    let target = path.resolve(root, `.${pathname}`);
+    if ((target !== path.resolve(root) && !target.startsWith(root)) || pathname.includes('\0')) {
       response.writeHead(403); response.end('Forbidden'); return;
     }
+    if ((await stat(target)).isDirectory()) target = path.join(target, 'index.html');
     const info = await stat(target);
     if (!info.isFile()) throw new Error('Not a file');
     const data = await readFile(target);

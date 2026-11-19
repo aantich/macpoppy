@@ -1,5 +1,23 @@
 const menuButton = document.querySelector('.menu-toggle');
 const mobileNav = document.querySelector('#mobile-nav');
+const siteHeader = document.querySelector('.site-header');
+const headerRows = siteHeader.querySelectorAll(':scope > .nav-wrap, :scope > .monitor-demo');
+const hero = document.querySelector('.velvet-hero');
+let heroObserver;
+
+const headerResize = new ResizeObserver(() => {
+  const height = Array.from(headerRows).reduce((sum, row) => sum + row.offsetHeight, 0);
+  document.documentElement.style.setProperty('--site-header-height', `${height}px`);
+
+  // Clip the observer's viewport by the height of the sticky menu and monitor.
+  heroObserver?.disconnect();
+  heroObserver = new IntersectionObserver(([entry]) => {
+    const pastHero = !entry.isIntersecting && entry.boundingClientRect.bottom <= height;
+    siteHeader.toggleAttribute('data-light-theme', pastHero);
+  }, { rootMargin: `-${height}px 0px 0px 0px` });
+  heroObserver.observe(hero);
+});
+headerRows.forEach(row => headerResize.observe(row));
 
 function closeMenu() {
   menuButton.setAttribute('aria-expanded', 'false');
@@ -21,7 +39,7 @@ document.addEventListener('keydown', event => {
   }
 });
 document.addEventListener('click', event => {
-  if (!mobileNav.hidden && !event.target.closest('.site-header')) closeMenu();
+  if (!mobileNav.hidden && !event.target.closest('.nav-wrap, .mobile-nav')) closeMenu();
 });
 matchMedia('(min-width: 721px)').addEventListener('change', event => {
   if (event.matches) closeMenu();
@@ -90,6 +108,7 @@ document.querySelectorAll('[data-open-product]').forEach(button => {
     const product = productInfo[button.dataset.openProduct];
     if (!product) return;
     dialogTrigger = button;
+    dialog.querySelector('#dialog-status').textContent = button.closest('article, section').querySelector('.release-status').textContent;
     dialog.querySelector('#dialog-title').textContent = product.name;
     dialog.querySelector('#dialog-description').textContent = product.description;
     const image = dialog.querySelector('#dialog-image');

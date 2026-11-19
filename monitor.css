@@ -1,0 +1,205 @@
+.monitor-demo {
+  --monitor-ink: #f2f4f8;
+  --monitor-secondary: #b9bdc6;
+  --monitor-base: #161a21;
+  --monitor-glass: #555861;
+  --monitor-card: #1c2028;
+  --monitor-line: rgb(240 244 255 / 21%);
+  --monitor-chart: #78f0a0;
+  --monitor-chart-width: 72px;
+  position: relative;
+  z-index: 10;
+  color-scheme: dark;
+  color: var(--monitor-ink);
+  font: 11px/1.15 -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+.site-header[data-light-theme] .monitor-demo,
+.monitor-demo[data-monitor-theme="light"] {
+  --monitor-ink: #22252a;
+  --monitor-secondary: #60636a;
+  --monitor-base: #f8fafd;
+  --monitor-glass: #e4e8ee;
+  --monitor-card: #f8fafd;
+  --monitor-line: rgb(26 32 41 / 16%);
+  --monitor-chart: #c93648;
+  color-scheme: light;
+}
+
+.monitor-symbols { position: absolute; width: 0; height: 0; pointer-events: none; }
+
+.monitor-ribbon {
+  min-height: 40px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  background: var(--monitor-base);
+  background: color-mix(in srgb, var(--monitor-base), var(--monitor-glass) 22%);
+  box-shadow: 0 2px 5px rgb(20 26 36 / 7%);
+}
+
+.monitor-metrics { grid-column: 2; display: flex; }
+.monitor-demo button:focus-visible {
+  outline: 2px solid var(--monitor-chart);
+  outline-offset: -2px;
+}
+.monitor-metric:hover, .monitor-metric[aria-expanded="true"], .monitor-detail-close:hover {
+  background: color-mix(in srgb, var(--monitor-ink) 8%, transparent);
+}
+
+.monitor-metric {
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  height: 38px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  flex: none;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 12px 0 15px;
+}
+
+.monitor-metric::after {
+  content: "";
+  position: absolute;
+  right: 1px;
+  height: 24px;
+  width: 1px;
+  background: var(--monitor-line);
+}
+.monitor-metric:last-child::after { display: none; }
+
+.monitor-icon {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--monitor-secondary);
+}
+.monitor-label, .monitor-percent small { color: var(--monitor-secondary); }
+
+.monitor-trace, .monitor-ring, .monitor-detail-chart {
+  display: block;
+  flex: none;
+  width: var(--monitor-chart-width);
+  height: 20px;
+  overflow: visible;
+  color: var(--monitor-chart);
+  fill: none;
+  stroke: currentColor;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.monitor-trace path, .monitor-detail-chart path { stroke-width: 1.35px; vector-effect: non-scaling-stroke; }
+.monitor-upload { opacity: .7; }
+.monitor-network-rows { display: grid; align-items: center; gap: 4px; }
+.monitor-network-rows > * { height: 11px; }
+.monitor-ring { width: 22px; height: 22px; stroke-width: 2.5px; }
+.monitor-ring circle:first-child { stroke: var(--monitor-ink); opacity: .12; }
+
+.monitor-percent, .monitor-rates, .monitor-detail-value { font-variant-numeric: tabular-nums; font-weight: 500; }
+.monitor-percent { display: flex; align-items: baseline; gap: 3px; width: 41px; }
+.monitor-percent b { font-size: 15px; font-weight: 500; }
+.monitor-percent small { font-size: 11px; font-weight: 400; }
+.monitor-network .monitor-rates { width: 72px; text-align: left; }
+.monitor-disk .monitor-rates { width: 77px; text-align: left; }
+
+.monitor-get {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-height: 28px;
+  padding: 0 11px;
+  border: 1px solid rgb(80 34 27 / 12%);
+  border-radius: 9px;
+  background: linear-gradient(#c54c37, #b23e2e);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 650;
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.monitor-download {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.monitor-ribbon > .monitor-get {
+  grid-column: 3;
+  justify-self: end;
+  margin-right: 12px;
+}
+
+.monitor-detail {
+  --monitor-card-width: 420px;
+  --monitor-card-half-width: 210px;
+  position: absolute;
+  z-index: 1;
+  top: calc(100% + 4px);
+  left: clamp(8px, calc(var(--monitor-card-center, 50%) - var(--monitor-card-half-width)), max(8px, calc(100% - var(--monitor-card-width) - 8px)));
+  width: min(var(--monitor-card-width), calc(100% - 16px));
+  max-height: calc(100dvh - var(--site-header-height, 116px) - 12px);
+  overflow-y: auto;
+  padding: 15px;
+  background: var(--monitor-card);
+  border: 1px solid var(--monitor-line);
+  border-radius: 10px;
+  box-shadow: 0 8px 25px rgb(15 20 31 / 18%);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.monitor-caption, .monitor-detail-caption { font-size: 11px; color: var(--monitor-secondary); }
+.monitor-caption { margin-bottom: 8px; }
+.monitor-detail h2 { margin: 0 0 2px; font-size: 16px; font-weight: 600; }
+.monitor-detail-value { margin-bottom: 10px; font-size: 15px; }
+.monitor-detail-chart { width: 100%; height: 34px; margin: 4px 0; }
+.monitor-detail-caption { margin-top: 8px; }
+.monitor-detail-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  padding: 0;
+  font-size: 19px;
+}
+.monitor-detail-disk { width: 100%; accent-color: var(--monitor-chart); }
+.monitor-detail .monitor-get { display: flex; width: fit-content; margin: 12px 0 0 auto; }
+
+@media (max-width: 1090px) {
+  .monitor-demo { --monitor-chart-width: clamp(36px, calc(26vw - 208px), 72px); }
+  .monitor-metric { padding-inline: 10px 9px; }
+}
+@media (max-width: 940px) {
+  .monitor-demo { --monitor-chart-width: 60px; }
+  .monitor-metrics { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .monitor-metric:nth-child(even)::after { display: none; }
+}
+@media (max-width: 690px) {
+  .monitor-ribbon > .monitor-get { grid-column: 1 / -1; margin: 2px 12px 6px 0; }
+  .monitor-demo { --monitor-chart-width: clamp(20px, calc(18vw - 37px), 60px); }
+}
+@media (max-width: 440px) {
+  .monitor-metric { gap: 4px; padding-inline: 6px; }
+  .monitor-network .monitor-rates { width: 62px; }
+  .monitor-disk .monitor-rates { width: 64px; }
+}

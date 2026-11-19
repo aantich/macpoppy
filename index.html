@@ -2,20 +2,75 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-T2CTJM5J"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#faf9f7">
-  <meta name="description" content="Meet Poppy. Three thoughtful Mac apps for data protection, everyday utilities, and seamless Linux development. Deep. MagicBox. Velvet.">
-  <meta property="og:title" content="Poppy — Make more of your Mac.">
-  <meta property="og:description" content="Protection. Everyday superpowers. A better place to build. Meet the Poppy family.">
+  <meta name="theme-color" content="#1b1924">
+  <title>Poppy Velvet | Linux VMs for Apple silicon Macs</title>
+  <meta name="description" content="Run ARM64 Linux virtual machines on an Apple silicon Mac with Poppy Velvet. Work in a Linux desktop or connect local AI coding agents through MCP.">
+  <meta name="robots" content="max-image-preview:large">
+  <link rel="canonical" href="https://macpoppy.com/">
+  <meta property="og:title" content="Poppy Velvet | Linux VMs for your Mac">
+  <meta property="og:description" content="Linux workspaces on Apple silicon for you and your AI coding agents. Run local VMs and connect agents through MCP.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://macpoppy.com/">
   <meta property="og:site_name" content="Poppy">
-  <link rel="canonical" href="https://macpoppy.com/">
-  <title>Poppy — Make more of your Mac.</title>
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://macpoppy.com/assets/social/velvet.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Poppy Velvet graphic showing you and your coding agents connected to Linux workspaces on your Mac.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Poppy Velvet | Linux VMs for your Mac">
+  <meta name="twitter:description" content="Linux workspaces on Apple silicon for you and your AI coding agents. Run local VMs and connect agents through MCP.">
+  <meta name="twitter:image" content="https://macpoppy.com/assets/social/velvet.png">
+  <meta name="twitter:image:alt" content="Poppy Velvet graphic showing you and your coding agents connected to Linux workspaces on your Mac.">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://macpoppy.com/#website",
+          "url": "https://macpoppy.com/",
+          "name": "Poppy",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://macpoppy.com/#poppy" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://macpoppy.com/#poppy",
+          "name": "Poppy",
+          "url": "https://macpoppy.com/",
+          "logo": "https://macpoppy.com/assets/poppy-mark-transparent.png"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://macpoppy.com/#velvet",
+          "url": "https://macpoppy.com/#velvet",
+          "name": "Poppy Velvet",
+          "description": "Linux virtualization for Apple silicon Macs with local MCP access for AI coding agents.",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "macOS 27 or later",
+          "availableOnDevice": "Apple silicon Mac",
+          "image": "https://macpoppy.com/assets/social/velvet.png",
+          "publisher": { "@id": "https://macpoppy.com/#poppy" },
+          "softwareHelp": { "@id": "https://macpoppy.com/velvet/userguide/#guide" }
+        }
+      ]
+    }
+  </script>
   <link rel="icon" href="assets/poppy-mark-transparent.png" type="image/png">
   <link rel="preload" href="assets/fonts/Manrope-Variable.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="monitor.css">
   <script src="app.js" defer></script>
+  <script src="monitor.js" type="module"></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -23,64 +78,183 @@
     <div class="nav-wrap container">
       <a class="brand" href="#top" aria-label="Poppy home"><img src="assets/poppy-mark-transparent.png" alt="" width="42" height="42"><span>Poppy</span></a>
       <nav class="desktop-nav" aria-label="Main navigation">
-        <a href="#deep">Deep</a><a href="#magicbox">MagicBox</a><a href="#velvet">Velvet</a><span class="nav-divider" aria-hidden="true"></span><a href="#our-way">The Poppy way</a>
+        <a href="#velvet">Velvet</a><a href="#magicbox">MagicBox</a><a href="#deep">Deep</a><span class="nav-divider" aria-hidden="true"></span><a href="#our-way">The Poppy way</a>
       </nav>
       <a class="nav-cta" href="#apps">Meet the apps <span aria-hidden="true">↗</span></a>
       <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-nav"><span></span><span></span></button>
     </div>
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#deep">Poppy Deep</a><a href="#magicbox">Poppy MagicBox</a><a href="#velvet">Poppy Velvet</a><a href="#our-way">The Poppy way</a></nav>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="#velvet">Poppy Velvet</a><a href="#magicbox">Poppy MagicBox</a><a href="#deep">Poppy Deep</a><a href="#our-way">The Poppy way</a></nav>
+    <section class="monitor-demo" aria-label="MagicBox Monitor simulation">
+      <svg class="monitor-symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="monitor-memory-icon" viewBox="0 0 16 16">
+          <rect x="1.75" y="4" width="12.5" height="8" rx="1.5"/>
+          <path d="M4 2.5V4m2.7-1.5V4m2.6-1.5V4M12 2.5V4M4 12v1.5M6.7 12v1.5m2.6-1.5v1.5M12 12v1.5"/>
+        </symbol>
+        <symbol id="monitor-cpu-icon" viewBox="0 0 16 16">
+          <rect x="3" y="3" width="10" height="10" rx="1.35"/><rect x="5.6" y="5.6" width="4.8" height="4.8" rx=".45"/>
+          <path d="M5.5 1.5V3m2.5-1.5V3m2.5-1.5V3m-5 10v1.5M8 13v1.5m2.5-1.5v1.5M1.5 5.5H3M1.5 8H3m-1.5 2.5H3m10-5h1.5M13 8h1.5m-1.5 2.5h1.5"/>
+        </symbol>
+        <symbol id="monitor-net-icon" viewBox="0 0 16 16">
+          <circle cx="8" cy="8" r="6"/><path d="M8 2a9 9 0 0 1 0 12 9 9 0 0 1 0-12ZM3.2 5a10 10 0 0 0 9.6 0m-9.6 6a10 10 0 0 1 9.6 0M2 8h12"/>
+        </symbol>
+        <symbol id="monitor-disk-icon" viewBox="0 0 16 16">
+          <path d="M2 10.5 4 4h8l2 6.5V13H2zM2 10h12m-3 1.5h.5"/>
+        </symbol>
+        <symbol id="monitor-download-icon" viewBox="0 0 16 16">
+          <path d="M8 2.5v7m-3-3 3 3 3-3M2.5 10.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2"/>
+        </symbol>
+      </svg>
+      <div class="monitor-ribbon">
+        <div class="monitor-metrics">
+          <button class="monitor-metric" type="button" data-metric="memory" aria-label="Memory, 59%" aria-controls="monitor-detail" aria-expanded="false">
+            <svg class="monitor-icon" aria-hidden="true"><use href="#monitor-memory-icon"/></svg>
+            <span class="monitor-label" aria-hidden="true">RAM</span>
+            <svg class="monitor-trace" viewBox="0 0 72 20" preserveAspectRatio="none" aria-hidden="true"><path data-trace="memory"/></svg>
+            <span class="monitor-percent" aria-hidden="true"><b data-reading="memory">59</b><small>%</small></span>
+          </button>
+          <button class="monitor-metric" type="button" data-metric="cpu" aria-label="CPU, 23%" aria-controls="monitor-detail" aria-expanded="false">
+            <svg class="monitor-icon" aria-hidden="true"><use href="#monitor-cpu-icon"/></svg>
+            <span class="monitor-label" aria-hidden="true">CPU</span>
+            <svg class="monitor-trace" viewBox="0 0 72 20" preserveAspectRatio="none" aria-hidden="true"><path data-trace="cpu"/></svg>
+            <span class="monitor-percent" aria-hidden="true"><b data-reading="cpu">23</b><small>%</small></span>
+          </button>
+          <button class="monitor-metric monitor-network" type="button" data-metric="network" aria-label="Network, download 236 kB/s, upload 42 kB/s" aria-controls="monitor-detail" aria-expanded="false">
+            <svg class="monitor-icon" aria-hidden="true"><use href="#monitor-net-icon"/></svg>
+            <span class="monitor-label" aria-hidden="true">Net</span>
+            <span class="monitor-network-rows" aria-hidden="true">
+              <svg class="monitor-trace" viewBox="0 0 72 11" preserveAspectRatio="none"><path data-trace="download"/></svg>
+              <svg class="monitor-trace monitor-upload" viewBox="0 0 72 11" preserveAspectRatio="none"><path data-trace="upload"/></svg>
+            </span>
+            <span class="monitor-network-rows monitor-rates" aria-hidden="true">
+              <span data-reading="download">↓ 236 kB/s</span><span data-reading="upload">↑ 42 kB/s</span>
+            </span>
+          </button>
+          <button class="monitor-metric monitor-disk" type="button" data-metric="disk" aria-label="Disk Space, 426 GB free" aria-controls="monitor-detail" aria-expanded="false">
+            <svg class="monitor-icon" aria-hidden="true"><use href="#monitor-disk-icon"/></svg>
+            <span class="monitor-label" aria-hidden="true">Disk</span>
+            <svg class="monitor-ring" viewBox="0 0 22 22" aria-hidden="true">
+              <circle cx="11" cy="11" r="9"/><circle class="monitor-ring-used" cx="11" cy="11" r="9" pathLength="100" stroke-dasharray="57 100" transform="rotate(-90 11 11)"/>
+            </svg>
+            <span class="monitor-rates" data-reading="disk" aria-hidden="true">426 GB free</span>
+          </button>
+        </div>
+        <button class="monitor-get" type="button" disabled>
+          <svg class="monitor-download" aria-hidden="true"><use href="#monitor-download-icon"/></svg>
+          Get MagicBox
+        </button>
+      </div>
+      <div id="monitor-detail" class="monitor-detail" role="group" aria-labelledby="monitor-detail-title" hidden>
+        <p class="monitor-caption">Simulated readings</p>
+        <button class="monitor-detail-close" type="button" aria-label="Close metric details">×</button>
+        <h2 id="monitor-detail-title"></h2>
+        <p class="monitor-detail-value"></p>
+        <svg class="monitor-detail-chart" viewBox="0 0 72 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+        <svg class="monitor-detail-chart monitor-upload" viewBox="0 0 72 20" preserveAspectRatio="none" aria-hidden="true"><path/></svg>
+        <meter class="monitor-detail-disk" min="0" max="1000" value="574" aria-label="Used capacity in gigabytes" hidden></meter>
+        <p class="monitor-detail-caption"></p>
+        <button class="monitor-get" type="button" disabled>
+          <svg class="monitor-download" aria-hidden="true"><use href="#monitor-download-icon"/></svg>
+          Get MagicBox
+        </button>
+      </div>
+    </section>
   </header>
 
   <main id="main">
-    <div class="announcement">Something good is growing for your Mac. <a href="#apps">Take a first look <span aria-hidden="true">›</span></a></div>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container hero-copy">
-        <p class="eyebrow"><span class="little-flower" aria-hidden="true">✳</span> THOUGHTFUL APPS. MADE FOR MAC.</p>
-        <h1 id="hero-title">Make more<br>of your <span class="hero-mac">Mac.</span></h1>
-        <p class="hero-intro">Protection. Everyday superpowers. A better place to build.<br class="desktop-break"> Three thoughtful apps for the Mac you love.</p>
-        <a class="button button-dark" href="#apps">Explore the family <span aria-hidden="true">↓</span></a>
+    <section id="velvet" class="velvet-hero" aria-labelledby="velvet-title">
+      <div class="container velvet-hero-inner">
+        <div class="velvet-hero-copy">
+          <p class="velvet-hero-brand"><span class="color-dot dot-velvet"></span>Poppy Velvet <span class="release-status">currently testing</span></p>
+          <h1 id="velvet-title">Linux.<br><span>Right at home.</span></h1>
+          <p class="velvet-hero-tagline">Built by developers for developers, <span>human and AI</span></p>
+          <p id="velvet-diagram-summary" class="velvet-hero-intro">Run ARM64 Linux virtual machines on your Apple silicon Mac. Work in Velvet or connect your AI coding agent through MCP. Keep containers in the same workspace.</p>
+          <div class="velvet-links">
+            <button class="velvet-hero-action" type="button" data-open-product="velvet">Step inside Velvet</button>
+            <a class="velvet-hero-guide" href="/velvet/userguide/">User Guide</a>
+          </div>
+        </div>
+        <figure id="velvet-workflow" class="velvet-diagram" aria-labelledby="velvet-diagram-title" aria-describedby="velvet-diagram-summary">
+          <svg class="velvet-symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="velvet-person-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.25"/><path d="M5.5 20v-1.5a6.5 6.5 0 0 1 13 0V20"/></symbol>
+            <symbol id="velvet-agent-icon" viewBox="0 0 24 24"><rect x="4" y="7" width="16" height="13" rx="3"/><path d="M12 4v3M9 12v1m6-1v1m-5 3h4M2 11v4m20-4v4"/></symbol>
+            <symbol id="velvet-desktop-icon" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="13" rx="2"/><path d="M12 17.5V21m-4 0h8"/></symbol>
+            <symbol id="velvet-terminal-icon" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="m7.5 9 3 3-3 3m6 0h3"/></symbol>
+            <symbol id="velvet-node-icon" viewBox="0 0 24 24"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-2.5-11-3 14"/></symbol>
+            <symbol id="velvet-container-icon" viewBox="0 0 24 24"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Zm-8 4.5 8 4.5 8-4.5M12 12v9"/></symbol>
+            <symbol id="velvet-browser-icon" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9.5h18M7 7h.1m3 0h.1"/></symbol>
+            <symbol id="velvet-game-icon" viewBox="0 0 24 24"><path d="M8 7h8c2 0 3.5 1.5 4 3.3l1 4.4c.6 2.8-2 4.2-4 2.3l-1.7-1.7H8.7L7 17c-2 1.9-4.6.5-4-2.3l1-4.4C4.5 8.5 6 7 8 7Zm.5 3v4m-2-2h4m5 .1h.1m2.9-1.6h.1"/></symbol>
+            <symbol id="velvet-mac-icon" viewBox="0 0 24 24"><path d="M4.5 16V6a1.5 1.5 0 0 1 1.5-1.5h12A1.5 1.5 0 0 1 19.5 6v10m-15 0L3 19h18l-1.5-3Zm5.5 0h4"/></symbol>
+          </svg>
+          <div class="velvet-diagram-heading">
+            <h2 id="velvet-diagram-title">One Mac. Many Linux workspaces.</h2>
+          </div>
+          <div class="velvet-entry">
+            <div class="velvet-entry-nodes">
+              <div class="velvet-actor">
+                <span class="velvet-node-icon"><svg aria-hidden="true"><use href="#velvet-person-icon"/></svg></span>
+                <div><strong>You</strong><span>Velvet app</span></div>
+              </div>
+              <div class="velvet-actor">
+                <span class="velvet-node-icon velvet-agent"><svg aria-hidden="true"><use href="#velvet-agent-icon"/></svg></span>
+                <div><strong>Your agents</strong><span>Local MCP</span></div>
+              </div>
+            </div>
+            <svg class="velvet-connector velvet-merge" viewBox="0 0 480 54" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M120 0v12q0 13 13 13h94q13 0 13 13v16"/><path d="M360 0v12q0 13-13 13h-94q-13 0-13 13"/>
+            </svg>
+          </div>
+          <div class="velvet-hub">
+            <img src="assets/icons/velvet.svg" width="42" height="42" alt="">
+            <div><strong>Poppy Velvet</strong><span>VMs &amp; container management</span></div>
+          </div>
+          <svg class="velvet-connector velvet-fork" viewBox="0 0 900 56" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M450 0v56M450 14q0 13-13 13H163q-13 0-13 13v16M450 14q0 13 13 13h274q13 0 13 13v16"/>
+          </svg>
+          <div class="velvet-workspaces">
+            <div class="velvet-vm">
+              <div class="velvet-vm-header">
+                <span class="velvet-node-icon"><svg aria-hidden="true"><use href="#velvet-desktop-icon"/></svg></span>
+                <div><strong>Linux desktop</strong><span>Graphical VM</span></div>
+              </div>
+              <ul class="velvet-workloads" aria-label="Example Linux desktop apps">
+                <li><svg aria-hidden="true"><use href="#velvet-browser-icon"/></svg>Browser</li>
+                <li><svg aria-hidden="true"><use href="#velvet-game-icon"/></svg>3D game</li>
+              </ul>
+            </div>
+            <div class="velvet-vm velvet-vm-python">
+              <div class="velvet-vm-header">
+                <span class="velvet-node-icon"><svg aria-hidden="true"><use href="#velvet-terminal-icon"/></svg></span>
+                <div><strong>Python dev</strong><span>Linux VM · containers</span></div>
+              </div>
+              <ul class="velvet-workloads" aria-label="Example Python containers">
+                <li><svg aria-hidden="true"><use href="#velvet-container-icon"/></svg>API</li>
+                <li><svg aria-hidden="true"><use href="#velvet-container-icon"/></svg>Worker</li>
+              </ul>
+            </div>
+            <div class="velvet-vm velvet-vm-node">
+              <div class="velvet-vm-header">
+                <span class="velvet-node-icon"><svg aria-hidden="true"><use href="#velvet-node-icon"/></svg></span>
+                <div><strong>Node.js dev</strong><span>Linux VM · containers</span></div>
+              </div>
+              <ul class="velvet-workloads" aria-label="Example Node.js containers">
+                <li><svg aria-hidden="true"><use href="#velvet-container-icon"/></svg>Web app</li>
+                <li><svg aria-hidden="true"><use href="#velvet-container-icon"/></svg>Database</li>
+              </ul>
+            </div>
+          </div>
+          <div class="velvet-host">
+            <div><svg aria-hidden="true"><use href="#velvet-mac-icon"/></svg><strong>Your Mac</strong></div>
+            <span>Local VM execution · Apple silicon</span>
+          </div>
+        </figure>
       </div>
-      <div class="hero-art container" aria-label="The Poppy family: Deep, MagicBox, and Velvet">
-        <a class="hero-object hero-deep" href="#deep" aria-label="Explore Poppy Deep, backup and security">
-          <span class="object-halo" aria-hidden="true"></span>
-          <img src="assets/icons/deep.svg" width="256" height="256" alt="A flat teal app icon with a white shield and backup arrow" fetchpriority="high">
-          <span class="object-info"><span class="object-label"><span class="color-dot dot-deep"></span>Deep <span aria-hidden="true">↗</span></span><span class="object-description">Backup and security for your Mac.</span></span>
-        </a>
-        <a class="hero-object hero-magicbox" href="#magicbox" aria-label="Explore Poppy MagicBox, everyday Mac tools">
-          <span class="object-halo" aria-hidden="true"></span>
-          <img src="assets/icons/magicbox.svg" width="256" height="256" alt="A flat coral app icon with a white toolbox and small sparkle" fetchpriority="high">
-          <span class="object-info"><span class="object-label"><span class="color-dot dot-magicbox"></span>MagicBox <span aria-hidden="true">↗</span></span><span class="object-description">Five everyday Mac tools, together.</span></span>
-        </a>
-        <a class="hero-object hero-velvet" href="#velvet" aria-label="Explore Poppy Velvet, Linux and developer workspaces">
-          <span class="object-halo" aria-hidden="true"></span>
-          <img src="assets/icons/velvet.svg" width="256" height="256" alt="A flat violet app icon with layered windows and a terminal prompt" fetchpriority="high">
-          <span class="object-info"><span class="object-label"><span class="color-dot dot-velvet"></span>Velvet <span aria-hidden="true">↗</span></span><span class="object-description">Linux and containers, at home on Mac.</span></span>
-        </a>
-      </div>
-      <p class="hero-note"><span class="status-dot" aria-hidden="true"></span> A first look at what we’re building.</p>
     </section>
 
     <section id="apps" class="apps-section" aria-labelledby="apps-title">
       <div class="container section-heading">
         <div><p class="eyebrow">THE POPPY FAMILY</p><h2 id="apps-title">Good things.<br>Better together.</h2></div>
-        <p>For the files you can’t lose.<br>The little things you do every day.<br>And the next big thing you’ll build.</p>
+        <p>For the next big thing you’ll build.<br> The little things you do every day.<br> And the files you can’t lose.</p>
       </div>
-
-      <article id="deep" class="product product-deep container" aria-labelledby="deep-title">
-        <div class="product-copy">
-          <p class="product-name"><span class="color-dot dot-deep"></span>Poppy Deep</p>
-          <h2 id="deep-title">Your digital life.<br>In safe hands.</h2>
-          <p class="product-description">The home for your Mac’s backup and security. Less worrying about what could go wrong. More getting on with what matters.</p>
-          <div class="feature-tags"><span>Backup</span><span>Security</span><span>Peace of mind</span></div>
-          <button class="text-link" type="button" data-open-product="deep">A closer look at Deep <span aria-hidden="true">↗</span></button>
-        </div>
-        <div class="product-visual deep-visual" aria-hidden="true">
-          <div class="visual-orbit orbit-deep"></div>
-          <img class="product-icon" src="assets/icons/deep.svg" width="256" height="256" loading="lazy" alt="">
-          <div class="floating-caption deep-caption"><span class="caption-icon">✓</span><div><strong>A little more peace of mind.</strong><span>For the things that matter most.</span></div></div>
-        </div>
-        <span class="product-category">BACKUP + SECURITY</span>
-      </article>
 
       <article id="magicbox" class="product product-magicbox container" aria-labelledby="magicbox-title">
         <div class="product-visual magicbox-visual" aria-hidden="true">
@@ -89,7 +263,7 @@
           <div class="floating-caption magicbox-caption"><span class="caption-icon">⌘</span><div><strong>Less app-hopping.</strong><span>More getting things done.</span></div></div>
         </div>
         <div class="product-copy">
-          <p class="product-name"><span class="color-dot dot-magicbox"></span>Poppy MagicBox</p>
+          <p class="product-name"><span class="color-dot dot-magicbox"></span>Poppy MagicBox <span class="release-status">coming soon</span></p>
           <h2 id="magicbox-title">Little tools.<br>Big possibilities.</h2>
           <p class="product-description">Space to spare. Files unpacked. Windows in their place. Your everyday Mac essentials, brought together in one beautifully simple app.</p>
           <div class="feature-tags"><span>Five essential tools</span><span>One happy Mac</span></div>
@@ -145,20 +319,20 @@
         </div>
       </section>
 
-      <article id="velvet" class="product product-velvet container" aria-labelledby="velvet-title">
+      <article id="deep" class="product product-deep container" aria-labelledby="deep-title">
         <div class="product-copy">
-          <p class="product-name"><span class="color-dot dot-velvet"></span>Poppy Velvet</p>
-          <h2 id="velvet-title">Linux.<br>Right at home.</h2>
-          <p class="product-description">Your Mac on the outside. Your Linux world within. A smoother place for virtual machines, containers, and the ideas you’re ready to build.</p>
-          <div class="feature-tags"><span>Linux VMs</span><span>Containers</span><span>Developer workflows</span></div>
-          <button class="text-link" type="button" data-open-product="velvet">Step inside Velvet <span aria-hidden="true">↗</span></button>
+          <p class="product-name"><span class="color-dot dot-deep"></span>Poppy Deep <span class="release-status">planned</span></p>
+          <h2 id="deep-title">Your digital life.<br>In safe hands.</h2>
+          <p class="product-description">The home for your Mac’s backup and security. Less worrying about what could go wrong. More getting on with what matters.</p>
+          <div class="feature-tags"><span>Backup</span><span>Security</span><span>Peace of mind</span></div>
+          <button class="text-link" type="button" data-open-product="deep">A closer look at Deep <span aria-hidden="true">↗</span></button>
         </div>
-        <div class="product-visual velvet-visual" aria-hidden="true">
-          <div class="visual-orbit orbit-velvet"></div>
-          <img class="product-icon" src="assets/icons/velvet.svg" width="256" height="256" loading="lazy" alt="">
-          <div class="floating-caption velvet-caption"><span class="caption-icon">&gt;_</span><div><strong>Built for your next idea.</strong><span>From a fresh environment to flow.</span></div></div>
+        <div class="product-visual deep-visual" aria-hidden="true">
+          <div class="visual-orbit orbit-deep"></div>
+          <img class="product-icon" src="assets/icons/deep.svg" width="256" height="256" loading="lazy" alt="">
+          <div class="floating-caption deep-caption"><span class="caption-icon">✓</span><div><strong>A little more peace of mind.</strong><span>For the things that matter most.</span></div></div>
         </div>
-        <span class="product-category">LINUX, WITH A MAC STATE OF MIND</span>
+        <span class="product-category">BACKUP + SECURITY</span>
       </article>
     </section>
 
@@ -174,12 +348,12 @@
     </section>
 
     <section class="closing" aria-labelledby="closing-title">
-      <div class="container closing-inner"><img src="assets/poppy-mark-transparent.png" width="110" height="110" alt="Poppy flower" loading="lazy"><p class="eyebrow">GOOD THINGS ARE GROWING</p><h2 id="closing-title">A little Poppy.<br>A lot of possibility.</h2><p>Deep. MagicBox. Velvet.<br>A new family of Mac apps, thoughtfully in the making.</p><a class="button button-dark" href="#apps">Find your Poppy <span aria-hidden="true">↑</span></a><span class="coming-note">In development. Made with care.</span></div>
+      <div class="container closing-inner"><img src="assets/poppy-mark-transparent.png" width="110" height="110" alt="Poppy flower" loading="lazy"><p class="eyebrow">GOOD THINGS ARE GROWING</p><h2 id="closing-title">A little Poppy.<br>A lot of possibility.</h2><p>Velvet. MagicBox. Deep.<br>A new family of Mac apps, thoughtfully in the making.</p><a class="button button-dark" href="#apps">Find your Poppy <span aria-hidden="true">↑</span></a><span class="coming-note">In development. Made with care.</span></div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container footer-top"><a class="brand" href="#top" aria-label="Poppy, back to top"><img src="assets/poppy-mark-transparent.png" alt="" width="38" height="38"><span>Poppy</span></a><p>Good software. Happy Mac.</p><nav aria-label="Footer navigation"><a href="#deep">Deep</a><a href="#magicbox">MagicBox</a><a href="#velvet">Velvet</a><a href="#our-way">Our approach</a></nav></div>
+    <div class="container footer-top"><a class="brand" href="#top" aria-label="Poppy, back to top"><img src="assets/poppy-mark-transparent.png" alt="" width="38" height="38"><span>Poppy</span></a><p>Good software. Happy Mac.</p><nav aria-label="Footer navigation"><a href="#velvet">Velvet</a><a href="#magicbox">MagicBox</a><a href="#deep">Deep</a><a href="#our-way">Our approach</a></nav></div>
     <div class="container footer-bottom"><span>© 2026 Poppy</span><span>Independent software for Mac.</span><a href="#top">Back to top <span aria-hidden="true">↑</span></a></div>
     <p class="container trademark-note">Mac is a trademark of Apple Inc. Poppy is an independent software brand.</p>
   </footer>
@@ -187,7 +361,7 @@
   <dialog class="product-dialog" id="product-dialog" aria-labelledby="dialog-title">
     <button class="dialog-close" type="button" aria-label="Close product overview">×</button>
     <div class="dialog-art"><img id="dialog-image" src="assets/icons/deep.svg" alt="" width="480" height="480"></div>
-    <div class="dialog-copy"><p class="eyebrow">IN DEVELOPMENT</p><h2 id="dialog-title">Poppy Deep</h2><p class="dialog-description" id="dialog-description"></p><ul id="dialog-features"></ul><p class="dialog-note">A first look at the Poppy family. Product details and availability will follow.</p><button class="button button-dark dialog-done" type="button">Back to the family <span aria-hidden="true">↗</span></button></div>
+    <div class="dialog-copy"><p class="eyebrow" id="dialog-status"></p><h2 id="dialog-title">Poppy Deep</h2><p class="dialog-description" id="dialog-description"></p><ul id="dialog-features"></ul><p class="dialog-note">A first look at the Poppy family. Product details and availability will follow.</p><button class="button button-dark dialog-done" type="button">Back to the family <span aria-hidden="true">↗</span></button></div>
   </dialog>
 </body>
 </html>

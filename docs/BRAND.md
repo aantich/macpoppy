@@ -1,6 +1,6 @@
 # Poppy website identity
 
-Poppy is the umbrella brand for Deep, MagicBox, and Velvet. The landing page's headline is **“Make more of your Mac.”** Manrope is the selected typeface.
+Poppy is the umbrella brand for Deep, MagicBox, and Velvet. The landing page leads with Velvet and the headline **“Linux. Right at home.”** Manrope is the selected typeface.
 
 ## Logos and icons
 
@@ -10,8 +10,8 @@ The product icons follow a consistent Mac-style design: crisp, mostly flat shape
 
 | Product | Symbol | Editable asset |
 | --- | --- | --- |
-| Deep | Teal tile, white shield, backup arrow | [SVG](../assets/icons/deep.svg) |
-| MagicBox | Coral tile, white toolbox, small sparkle | [SVG](../assets/icons/magicbox.svg) |
+| Deep | Lamplighter, a pale anglerfish with a golden lure on teal | [SVG](../assets/icons/deep.svg) |
+| MagicBox | One line, a cube drawn with a single cream stroke on coral | [SVG](../assets/icons/magicbox.svg) |
 | Velvet | Violet tile, layered terminal windows | [SVG](../assets/icons/velvet.svg) |
 
 ## Typography

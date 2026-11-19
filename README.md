@@ -39,10 +39,10 @@ The headline is **“Make more of your Mac.”** The family promise is protectio
 
 The design uses generous space, large Manrope typography, concise benefit-led sections, flat Mac-style app icons, and restrained transitions. Poppy's coral flower, warmer surfaces, and original icon geometry give it its own identity alongside the requested Apple-inspired presentation.
 
-Supporting typography is 18px for desktop product copy and 16px on phones. Hero app names have one-sentence descriptions, and the product artwork uses a smaller, consistent scale. The website loads its own Manrope font file and uses Arial/sans-serif as fallbacks.
+Supporting typography is 18px for desktop product copy and 16px on phones. The hero pairs the Velvet introduction with a diagram of local agents, Linux workspaces, and containers. The website loads its own Manrope font file and uses Arial/sans-serif as fallbacks.
 
-- **Deep:** backup and security; a teal app tile with a white shield and backup arrow.
-- **MagicBox:** five everyday utility categories; a coral app tile with a white toolbox and small sparkle.
+- **Deep** pairs backup and security with Lamplighter, a pale anglerfish carrying a golden light on a teal tile.
+- **MagicBox** brings five everyday utilities together. Its One line icon draws a cube with a single cream stroke on coral.
 - **Velvet:** Linux virtualization, container workflows, and developer experience; a violet app tile with layered terminal windows.
 
 The app icons are editable SVG artwork inspired by the user's Mac Dock reference: mostly flat shapes, subtle gradients, consistent corner radii, and no glossy 3D materials. The canvas outside the app tiles, including their outer corners, is transparent. Every website flower-logo placement and the favicon use the transparent PNG export, without blend-mode workarounds. The original five flower-logo color variants have clean transparent exports in the brand library.
