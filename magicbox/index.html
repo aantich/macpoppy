@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101116">
+  <meta name="description" content="See how Poppy MagicBox monitors CPU, memory, network activity and disk space on your Mac.">
+  <link rel="canonical" href="https://macpoppy.com/magicbox/">
+  <link rel="icon" href="/assets/poppy-mark-transparent.png" type="image/png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/monitor.css">
+  <link rel="stylesheet" href="/magicbox/magicbox.css">
+  <script src="/app.js" defer></script>
+  <script src="/monitor.js" type="module"></script>
+  <title>Poppy MagicBox | System Monitor &amp; Disk Analyzer</title>
+</head>
+<body id="top" class="magicbox-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- Shared site header -->
+
+  <main id="main">
+    <section class="magicbox-overview" aria-labelledby="magicbox-title">
+      <div class="magicbox-wrap magicbox-overview-grid">
+        <div>
+          <div class="magicbox-brand"><img src="/assets/icons/magicbox.svg" width="58" height="58" alt="">Poppy MagicBox</div>
+          <h1 id="magicbox-title">See what your <span>Mac is doing.</span></h1>
+          <p>Keep live CPU, memory, network and storage readings in a slim panel at the top of your screen. Open a reading for a closer look, or use Disk Space to see what’s taking up room.</p>
+          <div class="magicbox-actions">
+            <a class="magicbox-primary" href="https://github.com/aantich/poppymagicbox-releases/releases">Download Now <span aria-hidden="true">↓</span></a>
+            <a class="magicbox-secondary" href="#top-panel">Explore Panel <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <figure class="magicbox-overview-shot">
+          <img src="/magicbox/images/overview.jpg" width="3456" height="2168" alt="MagicBox Utilities in dark mode with Disk Space, Monitor, and controls for the top panel and history">
+        </figure>
+      </div>
+    </section>
+
+    <section id="top-panel" class="magicbox-wrap magicbox-panel" aria-labelledby="panel-title">
+      <h2 id="panel-title">Take a closer look.</h2>
+      <p>Pin the top panel to keep it visible as you work. Select a metric to see the detail card it opens. The images below were captured in the standalone app.</p>
+      <figure class="magicbox-bar">
+        <img src="/magicbox/images/bar.jpg" width="3456" height="80" alt="The MagicBox top panel showing RAM, CPU, network and free disk space, with pin, options and collapse controls">
+      </figure>
+      <nav class="magicbox-jumps" aria-label="Top panel features">
+        <a href="#memory">Memory</a><a href="#cpu">CPU</a><a href="#network">Network</a><a href="#disk">Disk Space</a><a href="#panel-options">Panel options</a>
+      </nav>
+
+      <div class="magicbox-feature-grid">
+        <article id="memory" class="magicbox-feature" aria-labelledby="memory-title">
+          <div class="magicbox-feature-copy">
+            <h3 id="memory-title">Memory</h3>
+            <p>See estimated memory use over the last minute, with separate readings for wired memory, compressed memory and free pages. The standalone app also ranks running apps by resident RAM and can show which ones haven’t been in the foreground recently.</p>
+          </div>
+          <figure class="magicbox-feature-shot">
+            <img src="/magicbox/images/memory.jpg" width="840" height="1532" loading="lazy" alt="Memory dropdown with a history chart, wired and compressed memory, free pages, and the standalone list of running apps">
+          </figure>
+        </article>
+
+        <article id="cpu" class="magicbox-feature" aria-labelledby="cpu-title">
+          <div class="magicbox-feature-copy">
+            <h3 id="cpu-title">CPU</h3>
+            <p>Track overall CPU load over the last minute and see the activity of each logical core on its own 0–100% scale. The thermal state at the bottom shows the condition reported by macOS.</p>
+          </div>
+          <figure class="magicbox-feature-shot">
+            <img src="/magicbox/images/cpu.jpg" width="840" height="1244" loading="lazy" alt="CPU dropdown with total activity, individual core charts and thermal state">
+          </figure>
+        </article>
+
+        <article id="network" class="magicbox-feature" aria-labelledby="network-title">
+          <div class="magicbox-feature-copy">
+            <h3 id="network-title">Network</h3>
+            <p>Compare download and upload rates on one chart scale. See recent peaks, how much data was transferred during measured intervals, and which interface is carrying the primary route. A VPN can be that route.</p>
+          </div>
+          <figure class="magicbox-feature-shot">
+            <img src="/magicbox/images/network.jpg" width="840" height="1132" loading="lazy" alt="Network dropdown with separate upload and download charts, peak rates, and recorded traffic totals">
+          </figure>
+        </article>
+
+        <article id="disk" class="magicbox-feature" aria-labelledby="disk-title">
+          <div class="magicbox-feature-copy">
+            <h3 id="disk-title">Disk Space</h3>
+            <p>Check free capacity, see the space used by the largest folders, and follow a scan as it runs. Select <strong>Open Disk Space</strong> to explore the full map and drill into folders.</p>
+          </div>
+          <figure class="magicbox-feature-shot">
+            <img src="/magicbox/images/disk.jpg" width="840" height="1560" loading="lazy" alt="Disk Space dropdown showing free capacity, scan progress, a ring chart and the largest folders on the volume">
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <section class="magicbox-wrap magicbox-extras" aria-label="More monitor controls">
+      <article id="panel-options">
+        <h2>Panel options</h2>
+        <p>Open the <strong>…</strong> menu to change the appearance and background transparency, choose a display, turn on the live menu-bar reading, or pause monitoring.</p>
+      </article>
+      <article>
+        <h2>Monitor History</h2>
+        <p>Choose <strong>View History</strong> from the CPU, memory or network card to see up to an hour of readings saved on your Mac.</p>
+      </article>
+    </section>
+  </main>
+
+  <!-- Shared site footer -->
+</body>
+</html>

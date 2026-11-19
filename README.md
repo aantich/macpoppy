@@ -17,7 +17,7 @@ node --check app.js
 node --check server.mjs
 ```
 
-The page also works directly from `index.html` in a normal browser. No installation or build step is required.
+The homepage also opens directly from `index.html`. Use the preview server or a static build to see `/magicbox/` with the shared navigation and monitor bar.
 
 The equivalent npm scripts are `npm run dev` and `npm run check` when npm is configured to use a working Node installation.
 

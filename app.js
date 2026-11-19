@@ -8,6 +8,7 @@ let heroObserver;
 const headerResize = new ResizeObserver(() => {
   const height = Array.from(headerRows).reduce((sum, row) => sum + row.offsetHeight, 0);
   document.documentElement.style.setProperty('--site-header-height', `${height}px`);
+  if (!hero) return;
 
   // Clip the observer's viewport by the height of the sticky menu and monitor.
   heroObserver?.disconnect();
@@ -51,7 +52,7 @@ const horizontalTabs = matchMedia('(max-width: 720px)');
 const tabList = document.querySelector('.tool-tabs');
 
 function updateTabOrientation() {
-  tabList.setAttribute('aria-orientation', horizontalTabs.matches ? 'horizontal' : 'vertical');
+  tabList?.setAttribute('aria-orientation', horizontalTabs.matches ? 'horizontal' : 'vertical');
 }
 updateTabOrientation();
 horizontalTabs.addEventListener('change', updateTabOrientation);
@@ -119,11 +120,11 @@ document.querySelectorAll('[data-open-product]').forEach(button => {
   });
 });
 
-dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
-dialog.querySelector('.dialog-done').addEventListener('click', () => dialog.close());
-dialog.addEventListener('click', event => {
+dialog?.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
+dialog?.querySelector('.dialog-done').addEventListener('click', () => dialog.close());
+dialog?.addEventListener('click', event => {
   if (event.target !== dialog) return;
   const bounds = dialog.getBoundingClientRect();
   if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
 });
-dialog.addEventListener('close', () => { dialogTrigger?.focus(); });
+dialog?.addEventListener('close', () => { dialogTrigger?.focus(); });

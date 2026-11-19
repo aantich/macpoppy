@@ -1,6 +1,7 @@
-import { cp, mkdir, readFile, readdir, rm, stat } from 'node:fs/promises';
+import { cp, mkdir, readFile, readdir, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { magicBoxPage, renderMagicBoxPage } from './site-layout.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const output = path.join(root, 'dist');
@@ -9,7 +10,7 @@ if (domain !== 'macpoppy.com') throw new Error('Unexpected publication domain');
 
 const files = ['index.html', 'styles.css', 'app.js', 'monitor.css', 'monitor.js', 'CNAME', '.nojekyll', 'robots.txt', 'sitemap.xml'];
 const assets = ['assets/poppy-mark-transparent.png', 'assets/icons', 'assets/fonts', 'assets/social'];
-const pageDirectories = ['velvet/userguide', 'privacypolicy', 'support'];
+const pageDirectories = ['velvet/userguide', 'privacypolicy', 'support', 'magicbox'];
 for (const file of [...files, ...assets, ...pageDirectories]) await stat(path.join(root, file));
 
 await rm(output, { recursive: true, force: true });
@@ -18,6 +19,7 @@ for (const file of files) await cp(path.join(root, file), path.join(output, file
 await mkdir(path.join(output, 'assets'), { recursive: true });
 for (const asset of assets) await cp(path.join(root, asset), path.join(output, asset), { recursive: true });
 for (const directory of pageDirectories) await cp(path.join(root, directory), path.join(output, directory), { recursive: true });
+await writeFile(path.join(output, magicBoxPage), await renderMagicBoxPage(root));
 
 const site = new URL(`https://${domain}/`);
 async function verifyReferences(file, pattern) {
@@ -34,7 +36,7 @@ for (const file of ['index.html', ...pageDirectories.map(directory => `${directo
   await verifyReferences(file, /(?:src|href)="([^"#]+)(?:#[^"]*)?"/g);
   await verifyReferences(file, /<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content="([^"]+)"/g);
 }
-for (const file of [...files.filter(file => file.endsWith('.css')), 'velvet/userguide/guide.css', 'privacypolicy/policy.css', 'support/support.css']) {
+for (const file of [...files.filter(file => file.endsWith('.css')), 'velvet/userguide/guide.css', 'privacypolicy/policy.css', 'support/support.css', 'magicbox/magicbox.css']) {
   await verifyReferences(file, /url\(["']?([^"')]+)["']?\)/g);
 }
 
