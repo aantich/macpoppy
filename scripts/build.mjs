@@ -9,15 +9,15 @@ if (domain !== 'macpoppy.com') throw new Error('Unexpected publication domain');
 
 const files = ['index.html', 'styles.css', 'app.js', 'monitor.css', 'monitor.js', 'CNAME', '.nojekyll', 'robots.txt', 'sitemap.xml'];
 const assets = ['assets/poppy-mark-transparent.png', 'assets/icons', 'assets/fonts', 'assets/social'];
-const guide = 'velvet/userguide';
-for (const file of [...files, ...assets, guide]) await stat(path.join(root, file));
+const pageDirectories = ['velvet/userguide', 'privacypolicy'];
+for (const file of [...files, ...assets, ...pageDirectories]) await stat(path.join(root, file));
 
 await rm(output, { recursive: true, force: true });
 await mkdir(output, { recursive: true });
 for (const file of files) await cp(path.join(root, file), path.join(output, file));
 await mkdir(path.join(output, 'assets'), { recursive: true });
 for (const asset of assets) await cp(path.join(root, asset), path.join(output, asset), { recursive: true });
-await cp(path.join(root, guide), path.join(output, guide), { recursive: true });
+for (const directory of pageDirectories) await cp(path.join(root, directory), path.join(output, directory), { recursive: true });
 
 const site = new URL(`https://${domain}/`);
 async function verifyReferences(file, pattern) {
@@ -30,11 +30,11 @@ async function verifyReferences(file, pattern) {
     if ((await stat(target)).isDirectory()) await stat(path.join(target, 'index.html'));
   }
 }
-for (const file of ['index.html', `${guide}/index.html`]) {
+for (const file of ['index.html', ...pageDirectories.map(directory => `${directory}/index.html`)]) {
   await verifyReferences(file, /(?:src|href)="([^"#]+)(?:#[^"]*)?"/g);
   await verifyReferences(file, /<meta\s+(?:property|name)="(?:og:image|twitter:image)"\s+content="([^"]+)"/g);
 }
-for (const file of [...files.filter(file => file.endsWith('.css')), `${guide}/guide.css`]) {
+for (const file of [...files.filter(file => file.endsWith('.css')), 'velvet/userguide/guide.css', 'privacypolicy/policy.css']) {
   await verifyReferences(file, /url\(["']?([^"')]+)["']?\)/g);
 }
 
