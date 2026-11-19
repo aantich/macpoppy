@@ -90,13 +90,6 @@ const productInfo = {
     background: '#eaf2f2',
     description: 'Backup and security, thoughtfully connected. Deep is being designed to make looking after your digital life feel a little less complicated.',
     features: ['A focused home for your Mac’s backup.', 'A clear view of protection and security.', 'A calmer way to look after important files.']
-  },
-  velvet: {
-    name: 'Poppy Velvet',
-    image: 'assets/icons/velvet.svg',
-    background: '#ece6f4',
-    description: 'A Mac-native home for your Linux workflows. Velvet brings our focus on performance and a considered developer experience to virtual machines and containers.',
-    features: ['Linux virtual machines, with a native Mac feel.', 'A home for container and project workflows.', 'A focus on reducing the friction between environments.']
   }
 };
 

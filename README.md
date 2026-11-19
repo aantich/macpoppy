@@ -49,7 +49,7 @@ The app icons are editable SVG artwork inspired by the user's Mac Dock reference
 
 The products are presented as **in development**. The artwork and utility interfaces are illustrative concepts, and sample disk, CPU, and memory values are not measurements. Product promises describe the requested direction, not implemented runtime capabilities. Prices, download links, compatibility promises, security guarantees, and launch dates have not been invented.
 
-Only the landing page is implemented. Header and hero links navigate to its product sections. Deep and Velvet open accessible product overview dialogs; MagicBox has five working preview tabs. There are no placeholder product routes, checkout flows, or unconnected signup forms.
+The landing page links to Velvet’s TestFlight beta and User Guide. Deep opens a product overview dialog, and MagicBox has five working preview tabs.
 
 ## MagicBox category selection
 
