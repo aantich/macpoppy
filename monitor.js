@@ -9,7 +9,12 @@ const diskMeter = demo.querySelector('.monitor-detail-disk');
 const readings = [...demo.querySelectorAll('[data-reading]')];
 const traces = [...demo.querySelectorAll('[data-trace]')];
 const metricButtons = [...demo.querySelectorAll('.monitor-metric')];
+const invite = demo.querySelector('.monitor-invite');
+const inviteLink = invite.querySelector('.monitor-invite-link');
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+const inviteDuration = 10_000;
+const inviteStart = performance.now() + 2_000;
+invite.style.setProperty('--monitor-invite-duration', `${inviteDuration}ms`);
 
 const metrics = {
   memory: { name: 'Memory', caption: 'App and system RAM over the last 60 seconds.' },
@@ -144,10 +149,20 @@ document.addEventListener('click', event => {
   if (!demo.contains(event.target)) closeDetail();
 });
 
+function updateInvite() {
+  const elapsed = performance.now() - inviteStart;
+  const show = elapsed >= 0 && elapsed % 30_000 < inviteDuration;
+  invite.classList.toggle('is-visible', show || reducedMotion.matches || inviteLink.matches(':hover, :focus'));
+}
+
 for (let index = 0; index < sampleCount; index += 1) sample();
 render();
+updateInvite();
+reducedMotion.addEventListener('change', updateInvite);
 setInterval(() => {
-  if (reducedMotion.matches || document.hidden) return;
+  if (document.hidden) return;
+  updateInvite();
+  if (reducedMotion.matches) return;
   sample();
   render();
 }, 1000);

@@ -395,6 +395,69 @@ body { font-size: 18px; }
 .velvet-hero-guide { color: #e0d2f4; font-size: 14px; font-weight: 650; }
 .velvet-hero-guide:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+.community-section {
+  padding-block: clamp(22px, 3vw, 40px);
+  background: #fff;
+  border-bottom: 1px solid #e4dcd6;
+}
+
+.community-callout {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 16px clamp(14px, 2vw, 26px);
+  padding: clamp(18px, 2.4vw, 30px);
+  border: 1px solid #ede2da;
+  border-bottom: 2px solid #dfd1c7;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #fcf6f2, #faf8f5);
+}
+
+.community-mark {
+  box-sizing: content-box;
+  padding: 10px;
+  border: 1px solid #f0e1d9;
+  border-radius: 14px;
+  background: #fffaf7;
+  object-fit: contain;
+}
+
+.community-callout h2 {
+  font-size: clamp(24px, 2.4vw, 32px);
+  font-weight: 650;
+  letter-spacing: -.045em;
+  line-height: 1.15;
+}
+
+.community-callout p { margin-top: 6px; color: #635752; line-height: 1.55; }
+
+.discord-button {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 46px;
+  padding: 10px 18px;
+  border: 1px solid #4f5cde;
+  border-radius: 10px;
+  background: #5865f2;
+  box-shadow: 0 1px 2px rgb(41 34 75 / 14%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.discord-button:hover { background: #4753d4; }
+.discord-button:focus-visible { outline-color: #4753d4; }
+
+@media (max-width: 650px) {
+  .community-callout { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+  .community-mark { width: 26px; height: 26px; padding: 8px; border-radius: 11px; }
+  .community-callout .discord-button { grid-column: 2; }
+}
+
 .velvet-diagram {
   --velvet-text: #f6f1ff;
   --velvet-quiet: #c3b8d6;

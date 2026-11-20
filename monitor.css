@@ -38,7 +38,65 @@
   box-shadow: 0 2px 5px rgb(20 26 36 / 7%);
 }
 
-.monitor-metrics { grid-column: 2; display: flex; }
+.monitor-metrics { grid-row: 1; grid-column: 2; display: flex; }
+
+.monitor-invite {
+  grid-row: 1;
+  grid-column: 1;
+  display: flex;
+  align-items: center;
+  container-type: inline-size;
+  min-height: 36px;
+  max-width: 360px;
+  margin-inline: 12px;
+  overflow: hidden;
+  color: var(--monitor-secondary);
+  font-size: 12px;
+  visibility: hidden;
+}
+
+.monitor-invite.is-visible { visibility: visible; }
+
+.monitor-invite-link {
+  flex: none;
+  width: max-content;
+  padding-block: 2px;
+  white-space: nowrap;
+}
+
+.monitor-invite.is-visible .monitor-invite-link {
+  animation: monitor-invite-scroll var(--monitor-invite-duration) linear both;
+}
+
+.monitor-invite.is-visible .monitor-invite-link:hover { animation-play-state: paused; }
+
+@keyframes monitor-invite-scroll {
+  from { transform: translateX(100cqw); }
+  to { transform: translateX(-100%); }
+}
+
+.monitor-invite.is-visible .monitor-invite-link:focus-visible {
+  width: auto;
+  white-space: normal;
+  animation: none;
+}
+
+.monitor-invite strong {
+  color: var(--monitor-ink);
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: .2em;
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .monitor-invite.is-visible .monitor-invite-link {
+    width: auto;
+    white-space: normal;
+    animation: none;
+  }
+}
+
 .monitor-demo :is(button, a):focus-visible {
   outline: 2px solid var(--monitor-chart);
   outline-offset: -2px;
@@ -141,6 +199,7 @@
 }
 
 .monitor-ribbon > .monitor-get {
+  grid-row: 1;
   grid-column: 3;
   justify-self: end;
   margin-right: 12px;
@@ -189,6 +248,7 @@
 @media (max-width: 1090px) {
   .monitor-demo { --monitor-chart-width: clamp(36px, calc(26vw - 208px), 72px); }
   .monitor-metric { padding-inline: 10px 9px; }
+  .monitor-invite { font-size: 11px; }
 }
 @media (max-width: 940px) {
   .monitor-demo { --monitor-chart-width: 60px; }
@@ -196,7 +256,13 @@
   .monitor-metric:nth-child(even)::after { display: none; }
 }
 @media (max-width: 690px) {
-  .monitor-ribbon > .monitor-get { grid-column: 1 / -1; margin: 2px 12px 6px 0; }
+  .monitor-ribbon { grid-template-columns: minmax(0, 1fr) auto; }
+  .monitor-metrics { grid-column: 1 / -1; justify-self: center; }
+  .monitor-invite {
+    grid-row: 2;
+    margin-inline: 12px 8px;
+  }
+  .monitor-ribbon > .monitor-get { grid-row: 2; grid-column: 2; margin: 2px 12px 6px 0; }
   .monitor-demo { --monitor-chart-width: clamp(20px, calc(18vw - 37px), 60px); }
 }
 @media (max-width: 440px) {
