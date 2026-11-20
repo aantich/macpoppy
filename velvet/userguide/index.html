@@ -10,12 +10,12 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f8f7fb">
-  <title>Poppy Velvet User Guide | Set Up Linux VMs on Mac</title>
-  <meta name="description" content="Install ARM64 Linux on an Apple silicon Mac, manage VMs, test accelerated OpenGL, and connect coding agents through MCP with the Poppy Velvet User Guide.">
+  <title>Poppy Velvet User Guide | Create Linux and macOS VMs</title>
+  <meta name="description" content="Create Linux and macOS virtual machines on an Apple silicon Mac. Follow illustrated Velvet Dev setup steps and learn how to use Linux Tools, graphics, and MCP.">
   <meta name="robots" content="max-image-preview:large">
   <link rel="canonical" href="https://macpoppy.com/velvet/userguide/">
   <meta property="og:title" content="Poppy Velvet User Guide">
-  <meta property="og:description" content="Set up a Linux VM on your Mac and connect a coding agent through MCP. Follow the Velvet guide from first boot to your first command.">
+  <meta property="og:description" content="Follow illustrated steps to create Linux and macOS VMs on your Mac with Velvet Dev.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://macpoppy.com/velvet/userguide/">
   <meta property="og:site_name" content="Poppy">
@@ -27,7 +27,7 @@
   <meta property="og:image:alt" content="Velvet User Guide graphic beside the app’s first-launch tour for Linux virtual machines, MCP, and 3D acceleration.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Poppy Velvet User Guide">
-  <meta name="twitter:description" content="Set up a Linux VM on your Mac and connect a coding agent through MCP. Follow the Velvet guide from first boot to your first command.">
+  <meta name="twitter:description" content="Follow illustrated steps to create Linux and macOS VMs on your Mac with Velvet Dev.">
   <meta name="twitter:image" content="https://macpoppy.com/assets/social/velvet-guide.png">
   <meta name="twitter:image:alt" content="Velvet User Guide graphic beside the app’s first-launch tour for Linux virtual machines, MCP, and 3D acceleration.">
   <script type="application/ld+json">
@@ -37,7 +37,7 @@
       "@id": "https://macpoppy.com/velvet/userguide/#guide",
       "url": "https://macpoppy.com/velvet/userguide/",
       "headline": "Poppy Velvet User Guide",
-      "description": "Install ARM64 Linux on an Apple silicon Mac, manage VMs, test accelerated OpenGL, and connect coding agents through MCP.",
+      "description": "Create and manage Linux and macOS virtual machines on an Apple silicon Mac with Velvet Dev.",
       "image": "https://macpoppy.com/assets/social/velvet-guide.png",
       "inLanguage": "en",
       "about": { "@id": "https://macpoppy.com/#velvet" },
@@ -69,8 +69,9 @@
         <nav aria-label="User guide sections">
           <p>Get started</p>
           <a href="#overview" aria-current="location">Overview</a>
-          <a href="#create">Create or import a VM</a>
-          <a href="#templates">Templates and Linux login</a>
+          <a href="#create">Create a Linux VM</a>
+          <a href="#create-macos">Create a macOS VM</a>
+          <a href="#templates">Use prepared templates</a>
           <a href="#run">Run and use the console</a>
           <p>Configure and automate</p>
           <a href="#settings">VM settings and storage</a>
@@ -92,7 +93,7 @@
           <div class="hero-copy">
             <span class="build-label"><span aria-hidden="true"></span> Velvet Dev testing build</span>
             <h1 id="guide-title">Velvet<br> User Guide</h1>
-            <p>Set up Linux on your Mac, use the desktop and terminal, and run commands and tests with a coding agent.</p>
+            <p>Create Linux and macOS virtual machines on your Mac. Use the Linux desktop and terminal, or connect a coding agent to run commands and tests.</p>
             <div class="hero-links">
               <a class="primary-link" href="#create">Create a VM <span aria-hidden="true">↓</span></a>
               <a class="secondary-link" href="#mcp">Connect an agent</a>
@@ -107,26 +108,25 @@
         </div>
         <div class="overview-note">
           <img src="/assets/icons/velvet.svg" width="48" height="48" alt="">
-          <p>Velvet runs on <strong>Apple silicon Macs with macOS 27 or later</strong>. Use an <strong>ARM64 (aarch64)</strong> Linux installer or disk image. Start with Ubuntu Desktop for a graphical Linux session or Ubuntu Server for a terminal-focused environment.</p>
+          <p>Velvet Dev runs on <strong>Apple silicon Macs with macOS 27 or later</strong>. Linux VMs use <strong>ARM64 (aarch64)</strong> installers and disks. macOS VMs use an Apple restore image compatible with your Mac.</p>
         </div>
       </section>
 
       <section class="guide-section" id="create" aria-labelledby="create-title">
-        <h2 id="create-title">Create or import a VM</h2>
-        <p class="section-intro">Use <strong>New VM</strong> in the library to install Linux, copy a disk image, or create a blank machine.</p>
+        <h2 id="create-title">Create a Linux VM</h2>
+        <p class="section-intro">Choose Ubuntu Desktop for a graphical session or Ubuntu Server for a terminal-focused environment.</p>
         <div class="guide-columns">
           <div>
-            <h3>Install Linux from an ISO</h3>
             <ol class="steps">
-              <li>Enter a name and choose <strong>Install an operating system</strong>.</li>
-              <li>Pick your ARM64 ISO with <strong>Choose…</strong>, or select <strong>Get Linux…</strong> to download Ubuntu. Velvet verifies vendor downloads and reuses completed installers for future VMs.</li>
-              <li>Continue through <strong>Resources</strong>, <strong>Storage</strong>, and <strong>Review</strong>. Select <strong>Create machine</strong>.</li>
-              <li>Select <strong>Boot installer</strong> and finish installing inside Linux. Create your own Linux user during the installation. Shut down and eject the ISO before booting the installed system.</li>
+              <li>In <strong>Templates</strong>, select <strong>Install…</strong> beside Ubuntu Desktop or Ubuntu Server. You can also open <strong>New VM</strong>, choose <strong>Linux</strong>, and select <strong>Installer ISO</strong>.</li>
+              <li>Click <strong>Get Linux…</strong> and choose <strong>Download</strong> or <strong>Use installer</strong> if it’s already cached. Use <strong>Choose…</strong> if you have your own ARM64 ISO.</li>
+              <li>Name the VM, continue through <strong>Resources</strong>, <strong>Storage</strong>, and <strong>Review</strong>, then select <strong>Create machine</strong>.</li>
+              <li>On the VM’s page, select <strong>Boot installer</strong>. Follow Ubuntu’s instructions inside the VM and create your Linux account. When installation finishes, shut down the VM, eject the ISO, and select <strong>Run machine</strong>.</li>
             </ol>
           </div>
           <figure class="guide-shot">
-            <a href="/velvet/userguide/images/new-vm.webp"><img src="/velvet/userguide/images/new-vm.webp" width="1313" height="1050" alt="New VM wizard showing the installer, disk import, and set up later choices." loading="lazy"></a>
-            <figcaption>Choose a Linux installation source in the <strong>System</strong> step.</figcaption>
+            <a href="/velvet/userguide/images/create-linux.webp"><img src="/velvet/userguide/images/create-linux.webp" width="1700" height="1360" alt="Velvet’s New VM wizard with Linux and Installer ISO selected for Ubuntu Desktop." loading="lazy"></a>
+            <figcaption><strong>Install…</strong> opens the Linux wizard with the Ubuntu edition selected.</figcaption>
           </figure>
         </div>
         <div class="guide-columns secondary-columns">
@@ -135,36 +135,62 @@
             <ul>
               <li><strong>Import a disk</strong> copies an ARM64 <code>.asif</code> or RAW disk into a new VM. A bootable disk needs its own bootloader and installed system. Convert other formats, such as QCOW2, to a supported disk format before importing.</li>
               <li><strong>Open Virtual Machine…</strong> adds a Velvet VM folder to the library in place. Use it when the VM already has a Velvet configuration and disk.</li>
-              <li><strong>Set up later</strong> creates a blank disk. Attach the ISO from the machine’s <strong>Installation media</strong> section when you’re ready.</li>
+              <li><strong>Set up later</strong> creates a blank disk. Select <strong>Choose installer</strong> on the machine’s page when you’re ready.</li>
             </ul>
           </div>
           <figure class="guide-shot">
-            <a href="/velvet/userguide/images/get-linux.webp"><img src="/velvet/userguide/images/get-linux.webp" width="1200" height="994" alt="Get Linux sheet with Download buttons for Ubuntu Desktop and Ubuntu Server ARM64." loading="lazy"></a>
+            <a href="/velvet/userguide/images/get-linux-current.webp"><img src="/velvet/userguide/images/get-linux-current.webp" width="1200" height="994" alt="Get Linux sheet with Download buttons for Ubuntu Desktop and Ubuntu Server ARM64." loading="lazy"></a>
             <figcaption><strong>Get Linux</strong> offers verified Ubuntu ARM64 installers.</figcaption>
           </figure>
         </div>
       </section>
 
+      <section class="guide-section" id="create-macos" aria-labelledby="create-macos-title">
+        <h2 id="create-macos-title">Create a macOS VM</h2>
+        <p class="section-intro">Velvet downloads restore images directly from Apple and checks whether the selected image can run on your Mac.</p>
+        <div class="guide-columns">
+          <ol class="steps">
+            <li>In <strong>Templates</strong>, select <strong>macOS</strong>, then choose <strong>Install…</strong> beside a release. You can also open <strong>New VM</strong> and select <strong>macOS</strong>.</li>
+            <li>Click <strong>Get macOS…</strong> and choose <strong>Download</strong> or <strong>Use installer</strong> if it’s already cached. Select <strong>Choose…</strong> to use a compatible local <code>.ipsw</code> file.</li>
+            <li>Name the VM and review its resources and storage. On <strong>Review</strong>, select <strong>Create &amp; Install</strong>. Velvet restores macOS to a fresh virtual disk.</li>
+            <li>Wait for the VM to reach <strong>Setup Assistant</strong>, then follow the prompts in its window. Use <strong>Run machine</strong> to start the installed VM on later visits.</li>
+          </ol>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/create-macos.webp"><img src="/velvet/userguide/images/create-macos.webp" width="1700" height="1360" alt="Velvet’s New VM wizard with macOS selected and Get macOS available to choose an Apple restore image." loading="lazy"></a>
+            <figcaption>The macOS wizard accepts an Apple restore image.</figcaption>
+          </figure>
+        </div>
+        <div class="guide-columns secondary-columns">
+          <div class="guide-callout">
+            <h3>Two macOS VMs at a time</h3>
+            <p>Starting or installing macOS uses a slot, and macOS VMs in other apps count toward the limit. If both slots are in use, shut down a macOS VM or cancel an installation before trying again. Linux VMs use neither slot.</p>
+          </div>
+          <figure class="guide-shot">
+            <a href="/velvet/userguide/images/get-macos.webp"><img src="/velvet/userguide/images/get-macos.webp" width="1200" height="994" alt="Get macOS sheet listing Apple restore images, download sizes, and Download buttons." loading="lazy"></a>
+            <figcaption>Choose a macOS release and check its download size before continuing.</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="guide-section" id="templates" aria-labelledby="templates-title">
-        <h2 id="templates-title">Templates and Linux login</h2>
-        <p>Open <strong>Templates</strong> for ready-to-provision environments such as Ubuntu, Ubuntu Desktop, Python, Node.js, and Rust. Select a published template and version, then choose <strong>Create VM</strong>. Velvet downloads or reuses its verified base, boots a new independent VM, and installs Poppy Tools.</p>
+        <h2 id="templates-title">Use prepared templates</h2>
+        <p><strong>Templates</strong> shows official installers and any prepared environments available for your Mac. If you have a signed Velvet template package, use <strong>Import Template Catalog…</strong>. Choose <strong>Create VM</strong> for a cached prepared image or <strong>Download and create…</strong> to download it first. Velvet boots an independent VM from the verified base and sets up Poppy Tools for supported Linux templates.</p>
         <ol>
           <li>Choose resources, a storage location, and an optional project in the creation dialog.</li>
-          <li>Watch <strong>Activity</strong> for first-boot setup. <strong>Template ready</strong> means setup completed. <strong>Cached</strong> means the base image is available locally.</li>
+          <li>Watch <strong>Activity</strong> for first-boot setup. <strong>Template ready</strong> means setup completed.</li>
           <li>Open the VM window when it’s ready. For supported templates, the creation dialog, machine page, and <strong>Settings → System</strong> explain how to sign in.</li>
         </ol>
         <div class="guide-callout">
           <h3>Ubuntu template account</h3>
           <p>The desktop or terminal signs in automatically as <code>developer</code> after setup. The account has no login password and direct root login is disabled. Use <code>sudo &lt;command&gt;</code> for one administrative command or <code>sudo -i</code> in the VM terminal for a root shell. Both use passwordless sudo. For manual installs and imported disks, use the account configured inside that VM.</p>
         </div>
-        <p>If the catalog shows <strong>Image not published</strong>, import a signed Velvet template package with <strong>Import Templates…</strong> or use <a href="#create">Get Linux</a> to install from an ISO.</p>
       </section>
 
       <section class="guide-section" id="run" aria-labelledby="run-title">
         <h2 id="run-title">Run and use the console</h2>
         <div class="guide-columns">
           <div>
-            <p>Choose <strong>Run machine</strong> to boot, or <strong>Show window</strong> to return to a running VM. Closing the VM window leaves Linux running. Use <strong>Shut down</strong> and wait for the stopped state before changing hardware settings.</p>
+            <p>Choose <strong>Run machine</strong> to boot, or <strong>Show window</strong> to return to a running VM. Closing the window leaves the VM running. Use <strong>Shut down</strong> and wait for the stopped state before changing hardware settings.</p>
             <h3>Find startup output</h3>
             <ul>
               <li><strong>VM Display</strong> shows the graphical console, including the installer and boot output sent to the display.</li>
@@ -195,7 +221,7 @@
           </table>
         </div>
         <p>Display resolution can be <strong>Automatic</strong>, <strong>Match Window</strong>, or a fixed size. Match Window requests the Mac window’s pixel size, including Retina. Linux can keep its current mode until you select the new resolution in the guest. The networking switch uses a shared connection through your Mac.</p>
-        <p>On the machine page, <strong>Disk capacity</strong> is what Linux can use. <strong>Allocated on this Mac</strong> shows the disk’s allocated blocks. A growable ASIF disk consumes more host space as Linux writes data. Use <strong>Reveal in Finder</strong> to locate the VM folder. From <strong>Remove…</strong>, choose <strong>Remove from Library</strong> to keep its files, or <strong>Move to Trash</strong> for a stopped VM you intend to delete.</p>
+        <p>On the machine page, <strong>Disk capacity</strong> is what the guest can use. <strong>Allocated on this Mac</strong> shows the disk’s allocated blocks. A growable disk consumes host space as the guest writes data. Use <strong>Reveal in Finder</strong> to locate the VM folder. From <strong>Remove…</strong>, choose <strong>Remove from Library</strong> to keep its files, or <strong>Move to Trash</strong> for a stopped VM you intend to delete.</p>
       </section>
 
       <section class="guide-section" id="graphics" aria-labelledby="graphics-title">
